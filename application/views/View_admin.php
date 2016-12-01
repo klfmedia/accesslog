@@ -4,10 +4,10 @@ $data['title']="Welcome KLF Company";
 $this->load->view('templates/header', $data);
 
 ?>
-<h3>Access History</h3>
+<h3 id="total">Access History</h3>
 <div style='overflow: auto;'>
 <table >
-<tr><td ><a href="<?php echo base_url().'index.php/user/displayAcesslog';?>">Not decide</a> </td>
+<tr><td ><a href="<?php echo base_url().'index.php/user/displayAcesslog/0';?>">Not decide</a> </td>
 	<td>&nbsp &nbsp</td><td><a href="<?php echo base_url().'index.php/user/displayAcesslog/1';?>">Accept</a></td>
 	<td>&nbsp &nbsp</td><td><a href="<?php echo base_url().'index.php/user/displayAcesslog/2';?>">Deny</a></td>
  </tr>

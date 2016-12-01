@@ -33,8 +33,9 @@ class Mmember extends CI_Model{
 			return $data;
 	}
 	
-	public function countAllaccLog(){
-		$query=($this->db->get("accesslogs"));
+	public function countAllaccLog($accesslogStatus){
+		$this->db->where("accStatus=".$accesslogStatus);
+		$query=$this->db->get("accesslogs");
 		return count($query->result_array());
 	}
 	
@@ -52,7 +53,7 @@ class Mmember extends CI_Model{
 		if($memberID=="memberID")
 		{
 			// select accesslog with status 0 : new . 1 : accept  . 2 : deny
-			if(!isset($accesslogStatus))	
+			if(!isset($accesslogStatus) )	
 			$sql =$sql." AND accStatus=0";
 			else
 				$sql =$sql." AND accStatus=".$accesslogStatus;
