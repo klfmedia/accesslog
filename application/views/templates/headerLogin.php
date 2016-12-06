@@ -21,9 +21,9 @@
   <script src="js/jquery-1.7.2.js" type="text/javascript"></script>    
   <script src="js/main.js" type="text/javascript"></script>
 </head>
-<body>
+  <body >
 <div style='overflow: auto;'>
-<h1><?php echo $title; ?></h1>
+<h1><center><?php echo $title; ?></center></h1>
 <section style='margin-left: 80%;'>
 </section>
 </div>

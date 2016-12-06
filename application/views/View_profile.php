@@ -3,11 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $data['title']="Welcome KLF Company";
 $this->load->view('templates/header', $data);
 ?>
+<!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center user-image-back">
+                   <img src="<?php echo base_url().'/uploads/'.$this->session->userdata('picture');?> " class="img-responsive" />                       
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url().'index.php/user/validate/';?>"><i class="fa fa-desktop "></i>Dashboard</a>
+                    </li>
+                   
+                    <li>
+                    
+                        <a href="<?php echo base_url().'index.php/user/validate/';?>"><i class="fa fa-mail-reply"></i>Go Back </a>
+                    </li>               
+                </ul>
+            </div>
+        </nav>
 
-<div style="width: 800px;float:right">
-<img src="<?php echo base_url().'uploads/'.$picture;?>" rel="stylesheet"" alt="no image" id="picName" style="width:104px;height:142px;">
-
-</div>
+<div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                  
+                </div>
+			<div class="row"> 
+			
+			
+			
 <form method="post" action="//submit.form" onSubmit="return validateForm();">
 
 <div style="padding-bottom: 18px;font-size : 21px;">PROFILE</div>
@@ -54,11 +77,15 @@ $this->load->view('templates/header', $data);
 <input type="text" id="txtDepartment" name="txtDepartment" style="width : 450px;" class="form-control"/>
 </div>
 </form>
-<div style="padding-bottom: 18px;"><br/>
-<a href='<?php
-		$member = $this->session->all_userdata();
-	echo base_url().'index.php/user/validate/';?>'> Back </a>
-</div>
+
+		</div>
+ 		</div>
+ 	</div>
+ <hr />
+ <br/>
+
+
+
 <?php
   $data['company']="KLF Company";;
   $this->load->view('templates/footer', $data);

@@ -18,7 +18,7 @@ class User extends CI_Controller{
 		{
 		 $this->login();
 		}
-		// display access log
+		// display access log 
 		$this->displayAcesslog(0);
 	}
 	
@@ -38,8 +38,11 @@ class User extends CI_Controller{
 				$this->session->set_userdata($member);
 			}
 			else
-			{
-				redirect(base_url().'index.php/user');
+			{			
+				
+				echo "<script type='text/javascript'> alert('Wrong User Name or password');";
+				echo " window.location.href = '" . base_url() ."index.php/user';";
+				echo "</script>";											
 			}		
 	}
 	
@@ -63,7 +66,17 @@ class User extends CI_Controller{
 			$memberID="memberID";
 			$data['accessLog']= $this->Mmember->getAccessLog($memberID,$config['per_page'],$start,$acclogStatus);
 			if($member["level"]==2)
-			{
+			{	
+				//calculate percent for display grogess bar
+					$totalAccessLogNotdecide=$this->Mmember->countAllaccLog(0);
+					$totalAccessAccept=$this->Mmember->countAllaccLog(1);
+					$totalAccessDeny=$this->Mmember->countAllaccLog(2);
+					$totalAccessLog=$totalAccessLogNotdecide+$totalAccessAccept+$totalAccessDeny;
+				
+				$data['totalAccessLogNotdecide']=round(($totalAccessLogNotdecide * 100 )/$totalAccessLog,0);
+				$data['totalAccessAccept']=round(($totalAccessAccept * 100 )/$totalAccessLog,0);
+				$data['totalAccessDeny']=round(($totalAccessDeny * 100 )/$totalAccessLog,0);
+				$data["accessStatus"]=$this->getAccessStatus($acclogStatus);
 				$view_Admin=$this->load->view("View_admin",$data);
 				echo "<div class='footer'> Total acceslog :<span style='color:red'>".$totalRow."</span> on ".$this->pagination->create_links()."</div>";
 			}
@@ -74,6 +87,16 @@ class User extends CI_Controller{
 				}
 	}
 	
+	private function getAccessStatus($acclogStatus)
+	{
+		switch ($acclogStatus) {
+			case 1:			return "<span class='label label-success'>Accept</span>";
+			case 2: 		return "<span class='label label-danger'>Deny</span> ";
+			default:		return "<span class='label label-primary'>Not Decide</span>";
+
+		}
+		
+	}
 	
 	//display profile
 	public function displayProfile($memberID=null)
@@ -119,7 +142,7 @@ class User extends CI_Controller{
 		$date=strtotime($date);
 		if($date<strtotime('now'))
 		{
-			$this->form_validation->set_message('checkdate', 'The date request must be after now');
+			$this->form_validation->set_message('checkdate', 'The date request must be after today');
 			return false;
 		}
 		else 

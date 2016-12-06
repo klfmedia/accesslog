@@ -6,11 +6,16 @@
 	<link href="<?php echo base_url();?>/CSS/Login_CSS/normalize.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url();?>/CSS/Login_CSS/style.css" rel="stylesheet" type="text/css" /> 
   </head>
-<?php 
-	$data['title']="Welcome KLF Company";
+	<?php 
+		$data['title']="Welcome KLF Company";
         $this->load->view('templates/headerLogin', $data);
-  ?>
-  <body >
+  	?>
+   <body>
+  
+  <div id="page-wrapper">
+            <div id="page-inner">               
+			<div class="row"> 
+			<div class="col-sm-4">
     <section class="login-form-wrap">
   <h1>KLF</h1>
   <form class="login-form" method="post" action="<?php echo base_url();?>index.php/user/validate">
@@ -25,6 +30,13 @@
   </form>
 
 </section>
+
+		 </div>
+ 			</div>
+ 		</div>
+ 	</div>
+ <hr />
+ <br/>
   </body>
   <?php
   $data['company']="KLF Company";;
