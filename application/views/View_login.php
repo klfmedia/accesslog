@@ -38,6 +38,9 @@
  <hr />
  <br/>
   </body>
+  
+  
+  
   <?php
   $data['company']="KLF Company";;
   $this->load->view('templates/footer', $data);?>

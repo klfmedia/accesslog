@@ -7,7 +7,14 @@
        text-align: center;    
        bottom: 0px; 
        width: 100%;
-   }  
+   }
+     
+img {
+    display: block;
+    margin: auto;
+     width: 90%;
+    height: auto;
+}
 </style>
 
     <meta charset="utf-8" />
@@ -21,6 +28,11 @@
     <link href="<?php echo base_url();?>/CSS/assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   
+     <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"> </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+     
 </head>
 <body>
 

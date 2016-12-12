@@ -14,7 +14,9 @@ $this->load->view('templates/header', $data);
                     <li>
                         <a href="<?php echo base_url().'index.php/user/validate/';?>"><i class="fa fa-desktop "></i>Dashboard</a>
                     </li>
-                               
+                    <li>
+                        <a href="<?php echo base_url().'index.php/user/summaryRequest/';?>"><i class="fa fa-bar-chart "></i>Summary request times</a>
+                    </li>           
                 </ul>
             </div>
         </nav>

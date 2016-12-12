@@ -3,6 +3,7 @@ class Mmember extends CI_Model{
 	public function __construct(){
 		parent::__construct();		
 	}
+	
 	public function listall(){
 		$this->db->select("mEmail, mPassword, level");
 		$this->db->where("mEmail","luis.klf@gmail.com");
@@ -33,12 +34,59 @@ class Mmember extends CI_Model{
 			return $data;
 	}
 	
+	public function checkEmail($mEmail,$mID=""){
+		if($mID != ""){
+			$this->db->where("mID !=", $mID);
+		}
+		$this->db->where('mEmail',$mEmail);
+		$query=$this->db->get("members");
+		if($query->num_rows() > 0){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+	
+	public function updateMember($data_update, $mID){
+		$this->db->where("mId", $mID);		
+		$this->db->update("members", $data_update);
+	}
+	
+	public function getPictureById($mID)
+	{
+		$this->db->where("mId", $mID);
+		$query=$this->db->get("members");
+		if($query->num_rows() > 0){
+			$data=$query->row_array();
+			return $data["picture"];
+		}else{
+			return null;
+		}
+	}
+		
 	public function countAllaccLog($accesslogStatus){
 		$this->db->where("accStatus=".$accesslogStatus);
 		$query=$this->db->get("accesslogs");
 		return count($query->result_array());
 	}
 	
+	public function countRequest()
+	{
+		$sql="SELECT COUNT( * ) as 'Times' ,  requestDate  ,  resName 
+				FROM  `accesslogs` , resources
+				WHERE  accesslogs.resID= resources.resourcesID
+				AND accStatus=2
+				GROUP BY  `requestDate` ,  `resID`
+				ORDER BY requestDate"; 
+		$query=$this->db->query($sql);
+		if( count($query->result_array())>0)
+		{
+			return  $query->result_array();
+		}
+		else
+			return null;
+
+	}
 	
 	public function getAccessLog($memberID,$total=null, $start=null,$accesslogStatus=null)
 	{
