@@ -3,12 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $data['title']="Welcome KLF Company";
 $this->load->view('templates/header', $data);
 ?>
+ <link href="<?php echo base_url();?>/CSS/stylesheets/style.css" rel="stylesheet" />
 <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li class="text-center user-image-back">
-                   <img src="<?php echo base_url().'/uploads/'.$member['picture'];?> " class="img-responsive" />                       
+                    <li class="text-center user-image-back" >
+                   <img src="<?php echo base_url().'/uploads/'.$member['picture'];?>" class="img-responsive"  />                       
                     </li>
                     <li>
                         <a href="<?php echo base_url().'index.php/user/validate/';?>"><i class="fa fa-desktop "></i>Dashboard</a>
@@ -29,8 +30,8 @@ $this->load->view('templates/header', $data);
             <div id="page-inner">              			
 		<div style="padding-bottom: 18px;font-size : 21px;">PROFILE</div>
 <div style="padding-bottom: 18px;font-size : 18px;">Contact Information</div>
-<?php  if(isset($error))
-	echo $error;?>			
+<?php  if(isset($mess))
+	echo $mess;?>			
 <?php // echo form_open_multipart('user/changePicture/'.$member["mID"]);?>
 
 <div style="display: flex; padding-bottom: 18px;width : 450px;">
@@ -46,10 +47,11 @@ $this->load->view('templates/header', $data);
 <div style="padding-bottom: 18px;">Email<br/>
 <input type="email" id="txtEmail" name="txtEmail"   style="width : 450px;" class="form-control" readonly/>
 </div>
-<form action="<?php echo base_url().'index.php/user/changePicture/'.$member["mID"];?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo base_url().'index.php/user/changePicture/'.$member["mID"];?>" method="post" enctype="multipart/form-data" id="formUpload">
 <div style="padding-bottom: 18px;">File<br/>
-<input type="file"  name="userFile" size="20"  style="width : 450px;" class="form-control" required/>
+<input type="file"  name="userFile" id="userFile" onchange="previewImg(event);" size="20"  style="width : 450px;" class="form-control" required/>
 </div>
+<div class="box-preview-img"></div>
 <br/>
 <div id="divSave" style="padding-bottom: 18px;">
 <input type="submit" value="save" id="btnSave" style="width : 200px;" class="btn btn-success"  > 
@@ -99,6 +101,22 @@ $this->load->view('templates/header', $data);
             } else 
                 $('#message').html('Not Matching').css('color', 'red');
         });
+
+        function previewImg(event) {
+         
+            var files = document.getElementById('userFile').files;         
+            $('#formUpload .box-preview-img').show();                    
+            $('#formUpload .box-preview-img').html('<p>Preview</p>');
+         
+         
+            for (i = 0; i < files.length; i++)
+            {
+              
+                $('#formUpload .box-preview-img').append('<img src="" id="' + i +'">');         
+                $('#formUpload .box-preview-img img:eq('+i+')').attr('src', URL.createObjectURL(event.target.files[i]));
+            }   
+        }
+	
         	
       </script>
 

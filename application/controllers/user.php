@@ -238,12 +238,13 @@ class User extends CI_Controller{
 		
 			if(isset($check))
 				{
-				
-					$member['picture']=basename($_FILES["userFile"]["name"]);
+					$fileName=basename($_FILES["userFile"]["name"]);
+					$member['picture']=$fileName;
 					$data['mess']="Upload success!";
-					$data_update['picture']= basename($_FILES["userFile"]["name"]);
+					$data_update['picture']= $fileName;
 					$this->load->model("Mmember");
 					$this->Mmember->updateMember($data_update, $mID);
+					$this->session->set_userdata("picture", $fileName);
 				}
 				else 
 					{
@@ -256,30 +257,7 @@ class User extends CI_Controller{
 		}
 		}
 			
-		/*	if (move_uploaded_file($_FILES["userFile"]["tmp_name"],  $_SERVER['DOCUMENT_ROOT'].'test/accesslog/uploads/'. basename($_FILES["userFile"]["name"]))) {
-				echo "The file ". basename( $_FILES["userFile"]["name"]).$_SERVER['DOCUMENT_ROOT']. " has been uploaded.";
-			} else {
-				echo "Sorry, there was an error uploading your file.";
-			}
-			
-			
-			//$this->upload->initialize($config);
-			if (!$this->upload->do_upload('userFile'))
-			{
-				$data['error']= $this->upload->display_errors();
-				$member['picture']=$this->input->post('userFile');
-				echo  $this->upload->display_errors()  ;//basename($_FILES["userFile"]["name"]);
-				$this->load->view('View_changePicture', $data);				
-			}
-			else
-			{
-				echo $this->upload->data();//basename($_FILES["userFile"]["name"]);
-				$data['error'] = $this->upload->data();
-				$member['picture']=$this->input->post('userFile');
-				$this->load->view('View_changePicture', $data);
-			}
-			
-		*/
+
 		
 	
 	
@@ -288,7 +266,7 @@ class User extends CI_Controller{
 		// check file already exist we delete first
 		
 		
-		$target_dir = $_SERVER['DOCUMENT_ROOT'].'/test/accesslog/uploads/';
+		$target_dir = $_SERVER['DOCUMENT_ROOT'].'/accesslog/uploads/';
 		$target_file = $target_dir . basename($_FILES["userFile"]["name"]);		
 	
 		
@@ -304,7 +282,7 @@ class User extends CI_Controller{
 			}
 		
 		// Check file size
-		if ($_FILES["userFile"]["size"] > 500000) {
+		if ($_FILES["userFile"]["size"] > 300000) {
 			return null;
 		}
 		// Allow certain file formats
