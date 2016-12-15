@@ -6,7 +6,7 @@ class User extends CI_Controller{
 		$this->load->library("session");
 	}
 	public function index(){	
-		
+		$this->session->sess_destroy();
 		$this->load->view("View_login2");
 	}
 	
@@ -46,45 +46,64 @@ class User extends CI_Controller{
 			}		
 	}
 	
-	// display access log
+	// display access log 
 	public function displayAcesslog($acclogStatus=null)
 	{
 		$this->load->model("Mmember");
-		
-		$totalRowPerPage=10;
-		$totalRow=$this->Mmember->countAllaccLog($acclogStatus);		
-			$config['total_rows'] = $totalRow;
-			$config['base_url'] = base_url()."index.php/user/displayAcesslog/".$acclogStatus;		
-			$config['per_page'] = $totalRowPerPage;
-			$start=$this->uri->segment(4);
-			$this->load->library('pagination', $config);
-				
+		$this->load->library('pagination');
+		// get member for display access log from session
 		$member = $this->session->all_userdata();
 		$memberID=$member["mID"];
 		// if level 2 is admin we display everything
-		if($member["level"]==2)
-			$memberID="memberID";
-			$data['accessLog']= $this->Mmember->getAccessLog($memberID,$config['per_page'],$start,$acclogStatus);
+		if($member["level"]==2){$memberID="memberID";}
+		
+			
+			// admin 
 			if($member["level"]==2)
-			{	
-				//calculate percent for display grogess bar
-					$totalAccessLogNotdecide=$this->Mmember->countAllaccLog(0);
-					$totalAccessAccept=$this->Mmember->countAllaccLog(1);
-					$totalAccessDeny=$this->Mmember->countAllaccLog(2);
-					$totalAccessLog=$totalAccessLogNotdecide+$totalAccessAccept+$totalAccessDeny;
-				
-				$data['totalAccessLogNotdecide']=round(($totalAccessLogNotdecide * 100 )/$totalAccessLog,0);
-				$data['totalAccessAccept']=round(($totalAccessAccept * 100 )/$totalAccessLog,0);
-				$data['totalAccessDeny']=round(($totalAccessDeny * 100 )/$totalAccessLog,0);
-				$data["accessStatus"]=$this->getAccessStatus($acclogStatus);
-				$view_Admin=$this->load->view("View_admin",$data);
-				echo "<div class='footer'> Total acceslog :<span style='color:red'>".$totalRow."</span> on ".$this->pagination->create_links()."</div>";
+			{
+				$totalRowPerPage=10;
+				$totalRow=$this->Mmember->countAllaccLog($acclogStatus);					
+				$config['total_rows'] = $totalRow;
+				$config['base_url'] = base_url()."index.php/user/displayAcesslog/".$acclogStatus;		
+				$config['per_page'] = $totalRowPerPage;
+				$this->pagination->initialize($config);		
+				$start=$this->uri->segment(4);			
+				$data['accessLog']= $this->Mmember->getAccessLog($memberID,$totalRowPerPage,$start,$acclogStatus);
+				$this->calculatePercent($data);
+				$data["accessStatus"]=$this->getAccessStatus($acclogStatus); //change number from database to word
+				$data['subview']="admin/View_adminDashboard";
+				$this->load->view('admin/View_admin',$data);			
+				echo "<div class='footer'> Total acceslog :<span style='color:red'>".$totalRow."</span> logs ".$this->pagination->create_links()."</div>";
 			}
-				else
-				{$data['accessLog']= $this->Mmember->getAccessLog($memberID,$config['per_page'],$start);
-					$view_employee=$this->load->view("View_employee",$data);					
-					echo "<div class='footer'>Total acceslog :<span style='color:red'>".$totalRow."</span> on ".$this->pagination->create_links()."</div>";
-				}
+			// employee
+			else
+			{
+				$totalRowPerPage=10;
+				$totalRow=$this->Mmember->countAllaccLog();
+				$config['total_rows'] = $totalRow;
+				$config['base_url'] = base_url()."index.php/user/displayAcesslog/";
+				$config['per_page'] = $totalRowPerPage;
+				$this->pagination->initialize($config);
+				$start=$this->uri->segment(3)?$this->uri->segment(3):0;				
+				$data['accessLog']= $this->Mmember->getAccessLog($memberID,$totalRowPerPage,$start);
+			
+				$data['subview']="employee/View_employeeDashboard";
+				$this->load->view('employee/View_employee',$data);
+				echo "<div class='footer'>Total acceslog :<span style='color:red'>".$totalRow."</span> logs ".$this->pagination->create_links()."</div>";
+			}
+	}
+	
+	//calculate percent for display grogess bar
+	private function calculatePercent(& $data)
+	{
+		$totalAccessLogNotdecide=$this->Mmember->countAllaccLog(0);
+		$totalAccessAccept=$this->Mmember->countAllaccLog(1);
+		$totalAccessDeny=$this->Mmember->countAllaccLog(2);
+		$totalAccessLog=$totalAccessLogNotdecide+$totalAccessAccept+$totalAccessDeny;
+		$data['totalAccessLogNotdecide']=round(($totalAccessLogNotdecide * 100 )/$totalAccessLog,0);
+		$data['totalAccessAccept']=round(($totalAccessAccept * 100 )/$totalAccessLog,0);
+		$data['totalAccessDeny']=round(($totalAccessDeny * 100 )/$totalAccessLog,0);
+		
 	}
 	
 	private function getAccessStatus($acclogStatus)
@@ -93,10 +112,11 @@ class User extends CI_Controller{
 			case 1:			return "<span class='label label-success'>Accept</span>";
 			case 2: 		return "<span class='label label-danger'>Deny</span> ";
 			default:		return "<span class='label label-primary'>Not Decide</span>";
-
+	
 		}
-		
+	
 	}
+
 	
 	//display profile
 	public function displayProfile($memberID=null)
@@ -110,7 +130,8 @@ class User extends CI_Controller{
 		$this->load->model("Mdepartment");
 		$department=$this->Mdepartment->getAllDepartment();
 		$data["department"]=$department;
-		$view_employee=$this->load->view("View_profile",$data);
+		$data['subview']="profile/View_profile";
+		$this->load->view('profile/View_profileMain',$data);
 		
 	}
 	
@@ -128,7 +149,9 @@ class User extends CI_Controller{
 		$this->form_validation->set_rules('dateResquest', 'Date Resquest','required|callback_checkdate');
 		if($this->form_validation->run() == FALSE)
 		{
-			$view_employee=$this->load->view("View_request",$data);
+			
+			$data['subview']="employee/View_request";
+			$this->load->view('employee/View_employee',$data);
 		}
 		 else
 		 {
@@ -140,7 +163,7 @@ class User extends CI_Controller{
 		 	$this->validate($member);
 		 }
 	}
-	
+	// check date send request must be from now
 	public function checkdate($date)
 	{
 		$date=strtotime($date);
@@ -164,7 +187,7 @@ class User extends CI_Controller{
 					"firstName"=>$this->input->post("txtFirstName"),
 					"lastName"=>$this->input->post("txtLastName"),
 					"mEmail"=>$this->input->post("txtEmail"),
-					"mPassword"=>$this->input->post("txtPassword"),
+					"mPassword"=>md5($this->input->post("txtPassword")),
 					"phoneNumber"=>$this->input->post("txtPhone"),
 					"gender" => $this->input->post("gender"),
 					"dateOfBirth"=>$this->input->post("txtDOB"),
@@ -180,6 +203,9 @@ class User extends CI_Controller{
 		}
 			$this->displayProfile();
 	}
+	
+
+	
 	
 	public function check_email($mEmail,$mID) {
 		$this->load->model('Mmember');
@@ -205,7 +231,9 @@ class User extends CI_Controller{
 		$member['mPassword']=$this->session->userdata('mPassword');	
 		$member['picture']=$this->session->userdata('picture');
 		$data["member"]=$member;
-		$this->load->view("View_changePassword",$data);
+		
+		$data['subview']="profile/View_changePassword";
+		$this->load->view('profile/View_profileMain',$data);
 		}
 		// change password 
 		else 
@@ -228,7 +256,8 @@ class User extends CI_Controller{
 		$member['mPassword']=$this->session->userdata('mPassword');
 		$member['picture']=$this->session->userdata('picture');
 		$data["member"]=$member;
-		$this->load->view("View_changePicture",$data);
+		$data['subview']="profile/View_changePicture";
+		$this->load->view('profile/View_profileMain',$data);
 		}
 		else 
 		{
@@ -253,20 +282,42 @@ class User extends CI_Controller{
 					}
 					
 					$data["member"]=$member;
-					$this->load->view('View_changePicture', $data);
+					$data['subview']="profile/View_changePicture";
+					$this->load->view('profile/View_profileMain',$data);
 		}
 		}
 			
-
-		
-	
-	
+		/*	if (move_uploaded_file($_FILES["userFile"]["tmp_name"],  $_SERVER['DOCUMENT_ROOT'].'test/accesslog/uploads/'. basename($_FILES["userFile"]["name"]))) {
+				echo "The file ". basename( $_FILES["userFile"]["name"]).$_SERVER['DOCUMENT_ROOT']. " has been uploaded.";
+			} else {
+				echo "Sorry, there was an error uploading your file.";
+			}
+			
+			
+			//$this->upload->initialize($config);
+			if (!$this->upload->do_upload('userFile'))
+			{
+				$data['error']= $this->upload->display_errors();
+				$member['picture']=$this->input->post('userFile');
+				echo  $this->upload->display_errors()  ;//basename($_FILES["userFile"]["name"]);
+				$this->load->view('View_changePicture', $data);				
+			}
+			else
+			{
+				echo $this->upload->data();//basename($_FILES["userFile"]["name"]);
+				$data['error'] = $this->upload->data();
+				$member['picture']=$this->input->post('userFile');
+				$this->load->view('View_changePicture', $data);
+			}
+			
+		*/
+			
 	private function uploadFile()
 	{
 		// check file already exist we delete first
 		
 		
-		$target_dir = $_SERVER['DOCUMENT_ROOT'].'/accesslog/uploads/';
+		$target_dir = $_SERVER['DOCUMENT_ROOT'].'/test/accesslog/uploads/';
 		$target_file = $target_dir . basename($_FILES["userFile"]["name"]);		
 	
 		
@@ -291,44 +342,13 @@ class User extends CI_Controller{
 					return null;
 				}
 				// Check if $uploadOk is set to 0 by an error					
-		if (move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file)) {					
-		
-			
-			
+		if (move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file)) {							
 			return basename( $_FILES["userFile"]["name"]);
 				
 			} else {
 				return null;
-			}
-					
-				
-		
+			}	
 	}
-	
-	// delete accesslog
-	public function adminDelete($accesslogId)
-	{
-		//delete
-		
-	}
-	// summary request 
-	public function summaryRequest()
-	{
-		$this->load->model("Mmember");
-		$data['accessLog']= $this->Mmember->countRequest();
-		$this->load->view('View_admin_summary', $data);
-	}
-	
-	// confirm accesslog
-	public function adminConfirm($accesslogId,$accStatus)
-	{
-		$this->load->model("Mmember");
-		$this->Mmember->updateAccStatus($accesslogId,$accStatus);
-		$member = $this->session->all_userdata();
-		//$this->displayAcesslog(0);
-		redirect(base_url().'index.php/user/displayAcesslog/0');
-	}
-	
 	// log out 
 	public function signOut()
 	{

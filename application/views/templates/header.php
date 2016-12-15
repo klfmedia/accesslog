@@ -15,6 +15,45 @@ img {
      width: 90%;
     height: auto;
 }
+
+.dropbtn {
+    background-color: white;
+    color: blue;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: blue;
+    padding: 10px 50px;
+    text-decoration: inherit;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+   
+}
 </style>
 
     <meta charset="utf-8" />
@@ -28,8 +67,8 @@ img {
     <link href="<?php echo base_url();?>/CSS/assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-   
-     <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"> </script>
+	 
+     <script src="http://code.jquery.com/jquery-2.0.0.min.js"> </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
      
@@ -55,4 +94,5 @@ img {
                 </div>
 
             </div>
+        </div>
         </div>

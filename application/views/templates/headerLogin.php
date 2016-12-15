@@ -23,7 +23,7 @@
 </head>
   <body >
 <div style='overflow: auto;'>
-<h1><center><?php echo $title; ?></center></h1>
+<h1 align='center'><?php echo $title; ?></h1>
 <section style='margin-left: 80%;'>
 </section>
 </div>

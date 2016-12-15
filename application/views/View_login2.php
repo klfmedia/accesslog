@@ -169,13 +169,13 @@ var WRInitTime=(new Date()).getTime();
 				<table class="loginTab">
 					<tr>
 						<td id="usernameArea">
-						<input type="email" id="username" required name="txtEmail" placeholder="Email" maxlength="30"/>
+						<input type="email" id="username"  name="txtEmail" placeholder="Email" maxlength="30" required/>
 		        		<div id="usernameError" style="display:none"></div>
 		        		</td>
 					</tr>
 					<tr>
 						<td id="passwordArea">
-		        			<input type="password" id="password" required name="txtPassword" placeholder="Password" maxlength="30"/>
+		        			<input type="password" id="password"  name="txtPassword" placeholder="Password" maxlength="30" required/>
 		        			<label class="show-pwd-text"><input type="checkbox" id="passCB" name="showPass" value="showPassword" style="vertical-align:text-bottom;"/>&nbsp;&nbsp;Show Password</label>
 		        			<div id="passwordError" style="display:none"></div>
 		        		</td>

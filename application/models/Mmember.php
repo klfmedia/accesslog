@@ -4,11 +4,12 @@ class Mmember extends CI_Model{
 		parent::__construct();		
 	}
 	
-	public function listall(){
-		$this->db->select("mEmail, mPassword, level");
-		$this->db->where("mEmail","luis.klf@gmail.com");
-		$query=$this->db->get("members");
-		return $query->result_array();
+	public function listallUser(){		
+		$sql="SELECT members.*,departments.depName
+		FROM members,departments where departmentID=depID";
+		$query=$this->db->query($sql);
+		$data= $query->result_array();
+		return $data;		
 	}
 	public function login($data=array())
 	{
@@ -16,6 +17,7 @@ class Mmember extends CI_Model{
 		$mPassword=$data["password"];
 	 	$this->db->where("mEmail",$mEmail);
 	 	$this->db->where("mPassword",$mPassword);
+	 	$this->db->where("status","active");
 		$query=$this->db->get("members");
 	
 		if( count($query->result_array())>0)
@@ -52,6 +54,10 @@ class Mmember extends CI_Model{
 		$this->db->update("members", $data_update);
 	}
 	
+	public function addMember($data_insert){
+		$this->db->insert("members",$data_insert);
+	}
+	
 	public function getPictureById($mID)
 	{
 		$this->db->where("mId", $mID);
@@ -64,7 +70,8 @@ class Mmember extends CI_Model{
 		}
 	}
 		
-	public function countAllaccLog($accesslogStatus){
+	public function countAllaccLog($accesslogStatus=null){
+		if(isset($accesslogStatus))
 		$this->db->where("accStatus=".$accesslogStatus);
 		$query=$this->db->get("accesslogs");
 		return count($query->result_array());
