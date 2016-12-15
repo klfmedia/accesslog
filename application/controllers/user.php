@@ -315,13 +315,8 @@ class User extends CI_Controller{
 	private function uploadFile()
 	{
 		// check file already exist we delete first
-		
-		
 		$target_dir = $_SERVER['DOCUMENT_ROOT'].'/test/accesslog/uploads/';
-		$target_file = $target_dir . basename($_FILES["userFile"]["name"]);		
-	
-		
-		
+		$target_file = $target_dir . basename($_FILES["userFile"]["name"]);				
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		// Check if image file is a actual image or fake image		
@@ -343,6 +338,16 @@ class User extends CI_Controller{
 				}
 				// Check if $uploadOk is set to 0 by an error					
 		if (move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file)) {							
+			$this->load->model("Mmember");
+			$mID=$this->session->userdata('mID');
+			$oldPicture=$this->Mmember->getPictureById($mID);
+			if(isset($oldPicture))
+			{
+				if($oldPicture!=basename($_FILES["userFile"]["name"]))
+				{
+				unlink($target_dir.$oldPicture);
+				}
+			}
 			return basename( $_FILES["userFile"]["name"]);
 				
 			} else {

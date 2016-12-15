@@ -1,13 +1,4 @@
-<?php
-	$mess=$this->session->flashdata("flash_mess");
-    if(isset($mess) && $mess != ''){
-        echo "<div>";
-        echo "<ul>";
-            echo "<li>$mess</li>";
-        echo "</ul>";
-        echo "</div>";
-    }
-	?>		
+	
 					<div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -16,7 +7,7 @@
                                         <th>Email</th>
                                         <th>DOB</th>
                                         <th>Picture</th>
-                                        <th>Status</th>
+                                        <th>Change Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>

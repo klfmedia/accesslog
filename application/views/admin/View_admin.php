@@ -12,15 +12,19 @@ $this->load->view('templates/header', $data);
                     </li>
                     <li>
                         <a href="<?php echo base_url().'index.php/user/validate/';?>"><i class="fa fa-desktop "></i>Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url().'index.php/admin/summaryRequest/';?>"><i class="fa fa-area-chart"></i>Summary request times</a>
                     </li> 
+                      <li class="dropdown">                    	
+                        <a href="#" class="dropbtn"><i class="fa fa-search"></i>Statistic Request</a>
+                    		<div class="dropdown-content">
+						   	 	<a href="<?php echo base_url().'index.php/admin/summaryRequest/';?>"><i class="fa fa-calendar"></i>&nbsp Summary request times</a> 				    	
+						    	 <a href="<?php echo base_url().'index.php/admin/summaryByUser/';?>"><i class="fa fa-male"></i>&nbsp Summary by user</a>
+						  </div>
+						 
+                    </li>
                     <li class="dropdown">                    	
                         <a href="#" class="dropbtn"><i class="fa fa-users"></i>User</a>
                     		<div class="dropdown-content">
-						   	 	<a href="<?php echo base_url().'index.php/admin/addUser/';?>"><i class="fa fa-plus"></i> Add New</a> 
-						    	
+						   	 	<a href="<?php echo base_url().'index.php/admin/addUser/';?>"><i class="fa fa-plus"></i> Add New</a> 				    	
 						    	<a href="<?php echo base_url().'index.php/admin/displayAllUser/';?>"><i class="fa fa-times-circle-o"></i> Disable User</a>
 						  </div>
 						 

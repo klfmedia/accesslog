@@ -11,7 +11,16 @@ class Admin extends User{
 	{
 		$this->load->model("Mmember");
 		$data['accessLog']= $this->Mmember->countRequest();
-		$data['subview']="admin/View_admin_summary";
+		$data['subview']="admin/summary/View_admin_summary";
+		$this->load->view('admin/View_admin',$data);
+	}
+	
+	// summary request by user
+	public function summaryByUser()
+	{
+		$this->load->model("Mmember");
+		$data['allUser']= $this->Mmember->numberRequestByUser();
+		$data['subview']="admin/summary/View_sumaryByUser";
 		$this->load->view('admin/View_admin',$data);
 	}
 	

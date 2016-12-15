@@ -49,6 +49,7 @@ img {
 
 .dropdown:hover .dropdown-content {
     display: block;
+     z-index: 999; 
 }
 
 .dropdown:hover .dropbtn {

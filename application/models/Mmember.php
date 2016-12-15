@@ -3,7 +3,7 @@ class Mmember extends CI_Model{
 	public function __construct(){
 		parent::__construct();		
 	}
-	
+	// for diasble user
 	public function listallUser(){		
 		$sql="SELECT members.*,departments.depName
 		FROM members,departments where departmentID=depID";
@@ -11,6 +11,38 @@ class Mmember extends CI_Model{
 		$data= $query->result_array();
 		return $data;		
 	}
+	
+	// for summary number request of user
+	public function numberRequestByUser(){
+		$alluser=$this->listallUser();
+		foreach ($alluser as $oneUser)
+		{
+			$sql="SELECT count(*) as total,accStatus 
+				 FROM accesslogs 
+				 WHERE memberID=?
+				 GROUP BY accStatus
+				 ORDER By accStatus";
+			$query=$this->db->query($sql,$oneUser['mID']);
+			$row = $query->row_array(3);
+			$row1 = $query->first_row('array');
+			$row2 = $query->next_row('array');
+			$row3 = $query->last_row('array');
+			$sum=(int)$row1['total']+(int)$row2['total']+(int)$row3['total'];
+			$data[$oneUser['mID']]=array(
+					"mID"=>$oneUser['mID'],
+					"lastName"=>$oneUser['lastName'],
+					"firstName"=>$oneUser['firstName'],
+					"mEmail"=>$oneUser['mEmail'],
+					"notdecide"=>$row1['total'],
+					"accept"=>$row2['total'],
+					"deny"=>$row3['total'],
+					"sum"=>$sum,
+			);
+		}
+		
+		return $data;
+	}
+	
 	public function login($data=array())
 	{
 		$mEmail= $data["email"];
