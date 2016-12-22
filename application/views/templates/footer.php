@@ -1,3 +1,4 @@
-		<em> &copy; <?php echo date('Y'); ?> </em>
+		<br>
+		<div class="footer"><em>  KLF Media Inc. &copy; <?php echo date('Y'); ?> </em></div>
 	</body>
 </html>

@@ -4,51 +4,57 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>KLF Media Inc.</title>
-		<style>
-			body {
-			background-image: url("./images/klfBackGround.png");
-			background-size: 1896px 1000px;
-			background-repeat: no-repeat;
-			
-			}
-			header {
-				color: red;
-				text-align: center;
-			} 
-			#imgLogo{
-				width: 150px;
-				height: 54ps;
-				
-			}
-			#leftside-header{
-				float:left;
-				/*clear: both;*/
-			}
-			#rigthside-header{
-				float: right;
-				/*clear: both;*/
-			}
-			#clear-spaces{
-				clear: both;
-			}
-    
-	</style>
+		
+		<!--<script src="<?php //echo base_url('css/head_body_style.css'); ?>" type="text/javascript"></script>-->
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/head_body_foot_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/sidenav_bar.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/login_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/employeeAccessHistory_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/adminAccessHistory_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/requestAccess_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/adminRequestAccess_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/userProfile_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>./css/footer_style.css">
+		<link rel = "stylesheet" type = "text/css" 
+		href = "<?php echo base_url(); ?>/css/updateUserprofile_style.css">
+		
 	</head>
 	<body>
-		<div >
+	<?php $this->load->helper('html');?>
+	<?php $this->load->library('session'); ?>
+	<div class="header">
+		<div id="leftside-header">		
+		<?php 
+		$image_properties = array('src'   => '/images/klf-Logo.png',
+										  'alt'   => 'KLF Logo',
+										  'id' => 'imglogo',
+										  'title' => 'KLF Inc.',);
+
+		echo img($image_properties);?><!--<img id="imglogo" src="/images/klf-Logo.png" alt="KLF Logo" >-->
+				
 		</div>
-			<header>
-      
-			<div id="leftside-header">
-				<img id="imgLogo" src="./images/klf-Logo.png" alt="KFLMedia Inc">
-			</div>
-			<div id="rigthside-header">
-				<a href="login.php">logout</a>
-			</div>
-			<div id="clear-spaces"></div>
-			<hr>
-			</header>
+		<div id="rigthside-header">
+			<?php 
+			if ($this->session->has_userdata('mID'))
+			{
+				echo "<a id='signout' href='".site_url("pages/logout")."'>Sign out</a>";
+					//echo 'session has data';
+			}
+			?>
+			<!--<a href="<?php //echo site_url('pages/view') ?>">logout</a>-->
+		</div>
+		<div id="clear-spaces">
+		</div>
+		<!--<hr>-->
+	</div>
 	
-		<h1><?php echo $title; ?></h1>
-		
-		
+		<!--<h1><?php //echo $title; ?></h1>-->
