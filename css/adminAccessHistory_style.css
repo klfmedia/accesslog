@@ -27,7 +27,7 @@
 
 
 
-table.tblemp {
+table.tblAdmin {
 	
     border-collapse: collapse;
     width: 80%;
@@ -37,7 +37,7 @@ table.tblemp {
 }
 
 
-table.tblemp thead{
+table.tblAdmin thead{
 	background-color: #b30000;
 	color: white;
 	text-align: center;
@@ -48,9 +48,9 @@ table.tblemp thead{
 
 
 
-table.tblemp tbody{
+table.tblAdmin tbody{
     text-align: left;
     padding: 8px;
 }
 
-table.tblemp tr:nth-child(even){background-color: #ffcccc}
+table.tblAdmin tr:nth-child(even){background-color: #ffcccc}

@@ -56,3 +56,32 @@ ul.sidenav li input:hover:not(.active) {
 	text-align:center;
 	color: black;
 }
+
+/*
+@media screen and (max-width: 1050px){
+    ul.sidenav {
+        width:100%;
+        height:auto;
+        position:relative;
+    }
+    ul.sidenav li input {
+        float: left;
+        padding: 15px;
+		text-align: center;
+    }
+    div.content {margin-left:0;}
+}*/
+
+@media screen and (max-width: 400px){
+	 ul.sidenav {
+        width:100%;
+        height:auto;
+        position:relative;
+    }
+    ul.sidenav li input {
+        text-align: center;
+        float: none;
+		text-align: center;
+    }
+}
+
