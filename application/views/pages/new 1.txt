@@ -1,7 +1,0 @@
-SELECT resName, requestDate, reason 
-FROM `accesslogs`
-JOIN resources
-ON resources.resourcesID = accesslogs.resID
-JOIN members
-ON accesslogs.memberID = members.mID
-WHERE members.mID = 2

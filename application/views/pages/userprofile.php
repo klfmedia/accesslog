@@ -1,9 +1,6 @@
 <?php 
 $this->load->library('session');
 $this->load->helper(array('form', 'url'));
-//$this->load->helper('url');
-
-//print_r($this->session->userdata()); 
 
 $fullname= $this->session->userdata('firstName')." ".$this->session->userdata('lastName');
 $title = $this->session->userdata('title');
@@ -38,11 +35,6 @@ else if ($this->session->userdata('level') == 2)
 		<li><input class="btnEmployeesSub" type="submit" value="Edit your profile" name="empAction"/></li>
 		<li><?php if($this->session->userdata('level') == 1) {echo "<input class='btnEmployeesSub' type='submit' value='My Access History' name='empAction'/>";}
 				  if($this->session->userdata('level') == 2) {echo "<input class='btnEmployeesSub' type='submit' value='Logs History' name='adminAction'/>";}?><li>
-		
-		
-		
-		
-		<!--<li><input class="btnEmployeesSub" type="submit" value="My Access History" name="empAction"/><li>-->
 		 
 		<?php if($this->session->userdata('level') == 1) {echo "<li><input class='btnEmployeesSub' type='submit' value='Request Access' name='empAction'/></li>";}?>
 		
@@ -50,7 +42,7 @@ else if ($this->session->userdata('level') == 2)
 </ul>
 
 <div class="userProfile">
-<!--<form>-->
+
 	<div class="usrInfoArea">
 	
 		
@@ -86,18 +78,6 @@ else if ($this->session->userdata('level') == 2)
 	<br>
 	</div>
   
-  <?php 
- /* if($this->session->userdata('level') == 1)
-  {
-	  echo "<input type='submit' value='My Access History' name='empAction'>";
-  }
-  if($this->session->userdata('level') == 2)
-  {
-	  echo "<input type='submit' value='Logs History' name='adminAction'>";
-  }
-  
-  */
-  ?>
   <br>
 </form>
 <br>

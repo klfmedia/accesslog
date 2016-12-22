@@ -27,22 +27,6 @@ class Administratoraction extends CI_Controller{
 			
 		}
 		
-	
-		if ($this->input->post('goback') == 'Go back')
-		{
-			/*echo "go back";*/
-			$this->logsHistoryAdmin();
-			/*$this->load->model('AccessHistory_model');
-			$tempLogsHistoryAdmin = $this->AccessHistory_model->searchLogsAdmin();
-					
-			$data2['tempLogsHistoryAdmin'] = $tempLogsHistoryAdmin;
-			//print_r($tempLogsHistoryAdmin);
-					
-			$title['title'] = "Administrator";
-			$this->load->view('templates/header', $title);
-			$this->load->view('pages/administrator',$data2);
-			$this->load->view('templates/footer', $title);*/
-		}
 		
 		
 		if ($this->input->post('adminAction') == 'My Profile')
@@ -193,17 +177,6 @@ class Administratoraction extends CI_Controller{
 			$this->changestatuslog($status);
 			//echo 'pending';
 		}
-		
-		
-		
-		//echo $id;
-		//echo $this->uri->segment(4);
-		//echo $this->input->get('logID');
-		//echo $this->input->get('action');
-		
-		
-		/*echo $this->input->post('accept');
-		echo $this->input->post('deny');*/
 	}
 	
 	function changestatuslog($status)
@@ -216,63 +189,22 @@ class Administratoraction extends CI_Controller{
 		$this->adminRequestAccess();
 	}
 	
-	
-	
-	
-/*	
-	public function accesslogvalidate()
-	{
-		
-		//echo $this->input->post('logID');
-		
-		$logID = $this->input->post('logID');
-	
-		
-		if( $this->input->post('accept'))
-		{
-			$status = 1;
-			//echo 'accept';
-		}
-		else if ($this->input->post('deny'))
-		{
-			$status = 0;
-			//echo 'deny';
-		}
-		else
-		{
-			$status = 2;
-			//echo 'pending';
-		}
-		
-		
-		$this->load->model('accesshistory_model');
-		$this->accesshistory_model->changestatuslog($logID,$status);
-		
-		$this->adminRequestAccess();
-		
-	}
-*/	
+
 	
 	function adminRequestAccess()
 	{
 		$this->load->model('AccessHistory_model');
 		$tempLogsHistoryAdmin = $this->AccessHistory_model->searchLogsAdmin();
 		
-		//if ( count($tempLogsHistoryAdmin) > 0)
-		//{
+
 			$data2['tempLogsHistoryAdmin'] = $tempLogsHistoryAdmin;
-			//print_r($tempLogsHistoryAdmin);
+
 				
 			$title['title'] = "Administrator Request";
 			$this->load->view('templates/header', $title);
 			$this->load->view('pages/requestaccessadmin',$data2);
 			$this->load->view('templates/footer', $title);
 
-		//}
-		//else
-		//{
-			//echo "No more data";
-		//}
 		
 		
 	}
@@ -283,7 +215,6 @@ class Administratoraction extends CI_Controller{
 			$tempLogsHistoryAdmin = $this->AccessHistory_model->searchLogsAdmin();
 					
 			$data2['tempLogsHistoryAdmin'] = $tempLogsHistoryAdmin;
-			//print_r($tempLogsHistoryAdmin);
 					
 			$title['title'] = "Administrator";
 			$this->load->view('templates/header', $title);

@@ -3,8 +3,7 @@
 <?php $this->load->helper('url'); ?>
 <?php $picture= $this->session->userdata('picture'); ?>
 
-<!--<div class="spacer">
-</div>-->
+
 <ul class="sidenav">
 	
 		<li><div id="empAvatar"><img src="<?php echo base_url('/images/avatars/'. $picture);?>" style="width:100px; height:100px;"></div></li>
@@ -14,16 +13,7 @@
 
 </ul>
 
-<!--<div class="buttons_employeeAccessHistory">
-	<input type="submit" value="Request Access" name="empAction"/>
-	<br>
-	<br>
-	<input type="submit" value="My Profile" name="empAction"/><br>
-	<br>
-</div>
 
-<br>
-<br>-->
 <div class = "employeeAccessHistory">
 
 <div id="title">

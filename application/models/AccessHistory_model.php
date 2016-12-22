@@ -19,7 +19,7 @@ class AccessHistory_model extends CI_Model{
 		
 		$result = $query->result_array();
 		
-		//print_r($result);
+
 		return $result;
 		
 	}
@@ -36,15 +36,14 @@ class AccessHistory_model extends CI_Model{
 		
 		$result = $query->result_array();
 		
-		//print_r($result);
+
 		return $result;
 		
 	}
 	
 	public function ChangeStatusLog($logID, $status)
 	{
-		//echo $logID;
-		//echo $status;
+
 		
 		$data = array( 'acclogStatus' => $status);
 		

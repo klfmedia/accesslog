@@ -1,9 +1,6 @@
 <?php 
 $this->load->library('session');
 $this->load->helper(array('form', 'url'));
-//$this->load->helper('url');
-
-//print_r($this->session->userdata()); 
 
 $fname= $this->session->userdata('firstName');
 $lname=$this->session->userdata('lastName');
@@ -31,8 +28,6 @@ else if ($this->session->userdata('level') == 2)
 }
 
 
-//echo form_open('employeeaction/action');
-
 
  ?>
  
@@ -43,11 +38,7 @@ else if ($this->session->userdata('level') == 2)
 		
 		<li><?php if($this->session->userdata('level') == 1) {echo "<input class='btnEmployeesSub' type='submit' value='My Access History' name='empAction'/>";}
 				  if($this->session->userdata('level') == 2) {echo "<input class='btnEmployeesSub' type='submit' value='Logs History' name='adminAction'/>";}?><li>
-		
-		
-		
-		
-		<!--<li><input class="btnEmployeesSub" type="submit" value="My Access History" name="empAction"/><li>-->
+
 		<li><?php if($this->session->userdata('level') == 1) { echo"<input class='btnEmployeesSub' type='submit' value='Request Access' name='empAction'/>";}
 		          if($this->session->userdata('level') == 2) { echo"<input class='btnEmployeesSub' type='submit' value='Admin Request Access' name='adminAction'/>";}?></li>
 </ul>
@@ -86,36 +77,9 @@ else if ($this->session->userdata('level') == 2)
 		{?>
 			<input style="border: 1px solid blue;" type="radio" name="avatar" value="<?php echo $k; ?>"><img src="<?php echo base_url($dir)."/".$k;?>" alt="" style="width:50px; height:50px;">
 			
-		<?php /*echo $k;*/$counter ++; if ($counter == 2) {echo '<br>'; $counter=0;} } ?>
+		<?php $counter ++; if ($counter == 2) {echo '<br>'; $counter=0;} } ?>
 		</div>
 		
-		<!--<table align="center">
-		<tr><td><b>First Name:</b></td><td><input type="text" name="fname" value="<?php //echo $fname; ?>" autofocus="autofocus"></td></tr>
-		<tr><td><b>Last Name:</b></td><td><input type="text" name="lname" value="<?php //echo $lname; ?>" ></td></tr>-->
-		<!--<tr><td>Title:</td><td> <input type="text" name="title" value="<?php //echo $title; ?>" readonly></td></td><td><?php //echo anchor('employeeaction/testchangeprof', 'Change your avatar');?></td></tr>
-		<tr><td>Designation Project:</td><td> <input type="text" name="desgproj" value="<?php //echo $designation; ?>" readonly></td><td rowspan='7'></td></tr>
-		<tr><td>Department:</td><td> <input type="text" name="department" value="<?php //echo $department; ?>" readonly></td></tr>
-		<tr><td>Join Date:</td><td> <input type="text" name="joindate" value="<?php //echo $joinDate; ?>" readonly></td></tr>-->
-		<!--<tr><td>Birthdate:</td><td> <input type="date" name="birthdate" value="<?php //echo $dob; ?>"  min="1940-01-01" ></td></tr>
-		<tr><td>Phone number:</td><td> <input type="text" name="phonenbr" value="<?php //echo $phonenbr; ?>" placeholder="Exp: 514-555-4433"></td></tr>
-		<tr><td>Email:</td><td><input type="text" name="email" value="<?php //echo $email; ?>" placeholder="yourmail@mail.com"></td></tr>
-		<tr><td>Password:</td><td><input type="text" name="password" value="<?php //echo $password; ?>"></td></tr>-->
-		<!--<tr><td>Change your Avatar:</td><td>-->
-		
-		<?php 
-		//$this->load->helper('directory'); //load directory helper
-		//$dir = "./images/avatars"; // Your Path to folder
-		//$map = directory_map($dir); /* This function reads the directory path specified in the first parameter and builds an array representation of it and all its contained files. */
-		//
-		//$counter=0;
-		//foreach ($map as $k)
-		//{?>
-			<!--<input type="radio" name="avatar" value="<?php //echo $k; ?>"><img src="<?php //echo base_url($dir)."/".$k;?>" alt="" style="width:50px; height:50px;">-->
-			
-		<?php /*echo $k;$counter ++; if ($counter == 2) {echo '<br>'; $counter=0;} } */?>
-		
-		<!--</td></tr>
-		</table>-->
 		</fieldset>
 		<br>
 		<br>
@@ -128,11 +92,7 @@ else if ($this->session->userdata('level') == 2)
 			<label>Phone number:</label>
 			<input type="text" name="phonenbrcontact" value="<?php echo $cphone; ?>" placeholder="Exp: 514-555-4433">
 			
-			<!--<table align="center">
-			<tr><td><b>Name:</b></td><td><input type="text" name="fullnamecontact" value="<?php //echo $cname; ?>"></td></tr>
-			<tr><td>Realtion:</td><td><input type="text" name="relationcontact" value="<?php //echo $crelation; ?>"></td></tr>
-			<tr><td>Phone number:</td><td><input type="text" name="phonenbrcontact" value="<?php //echo $cphone; ?>" placeholder="Exp: 514-555-4433"></td></tr>
-			</table>-->
+
 		</fieldset>
 		<br>
 		<div class="btnUpdateArea">
@@ -140,18 +100,7 @@ else if ($this->session->userdata('level') == 2)
 		</div>
 		<br>
 		<br>
-		<?php
-/*		    if($this->session->userdata('level') == 1)
-		{
-			echo "<input type='submit' value='My Access History' name='empAction'>";
-		}
-		if($this->session->userdata('level') == 2)
-		{
-			echo "<input type='submit' value='Logs History' name='adminAction'>";
-		}
-		*/
-		?>
-		<!--<input type="submit" value="My Access History" name="empAction">-->
+
 		<br>
 	</div>
 </form>

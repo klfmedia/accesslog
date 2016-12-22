@@ -11,10 +11,7 @@ Class MakeRequest_model extends CI_Model{
 	
 	function insertRequestDB($selectedSystem, $mboxInfo )
 	{
-		//test		
-		//print_r( $this->session->userdata('__ci_last_regenerate'));
-		//echo $selectedSystem;
-		//echo $mboxInfo;
+
 		
 		
 		$time = $this->session->userdata('__ci_last_regenerate'); //The session gives the time when the user log to the system

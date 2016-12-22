@@ -9,16 +9,6 @@ Class Userinfo_model extends CI_Model{
 		$this->load->database();
 	}
 	
-	function getUserInfo()
-	{
-		
-		//This funtion is empty becasue i'm using a session variable to get the info of the user
-		//I need to ask if is valid to use session variables to store the the data of the user or
-		// is better go to the db and find the info
-		//print_r($this->session->userdata());
-					
-	}
-	
 	function updateUserInfo()
 	{
 		

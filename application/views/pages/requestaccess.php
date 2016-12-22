@@ -1,7 +1,3 @@
-<!--<h3>Request Access</h3>-->
-
-<?php //print_r($tempResult); //recieve thye array from the controller called Requestaccess.php located in the controller file of the app ?>
-
 <?php $this->load->library('session'); ?>
 <?php $this->load->helper('url'); ?>
 <?php $picture= $this->session->userdata('picture'); ?>
@@ -19,7 +15,7 @@
 
 <div class="empRequest">
 	
-	<?php //echo form_label('Select one system to request:'); ?>
+	
 	<div class="requestArea">
 		<br>
 		<br>
@@ -35,15 +31,14 @@
 		<br>
 		<br>
 		<br>
-		<?php //echo form_label('Reason for this request:'); ?><?php echo form_error('reason_comment'); ?>
+		<?php echo form_error('reason_comment'); ?>
 		<textarea id="comment" name="reason_comment" placeholder="Reason for this request?" cols="100%" rows="10" tabindex="4"></textarea>
 		<br/>
 		<br/>
 		<input id="sendRequest" type="submit" value="Send" name="empAction"/>
 		<br>
 		<br>
-	
-		<!--<input type="submit" value="Go back" name="submit"/>-->
+
 	</div>
 
 </form>

@@ -12,13 +12,7 @@
 		}?>
 				
 		
-		<!--<li><?php /*if($this->session->userdata('level') == 1) {echo "<input class='btnEmployeesSub' type='submit' value='My Access History' name='empAction'/>";}
-				  if($this->session->userdata('level') == 2) {echo "<input class='btnEmployeesSub' type='submit' value='Logs History' name='adminAction'/>";}*/?></li>-->
-		
-		
-		
-		
-		<!--<li><input class="btnEmployeesSub" type="submit" value="My Access History" name="empAction"/><li>-->
+
 		<li><input class="btnEmployeesSub" type="submit" value="My Profile" name="adminAction"/></li>
 </ul>
 
@@ -46,8 +40,7 @@
 		<?php } ?>
 <?php echo "</tbody>" ?>	
 <?php echo"</table>"?>
-<?php /*echo "<br>";
-	echo "<input type='submit' value='Admin Request Access' name='adminAction'/>";*/
+<?php 
 	}else
 	  {
 		echo "<div id='nologsAdv'>";
@@ -58,7 +51,6 @@
 ?>
 		<br>
 		<br>
-	<!--<input type="submit" value="My Profile" name="adminAction"/><br>-->
 </form>
 
 </div>

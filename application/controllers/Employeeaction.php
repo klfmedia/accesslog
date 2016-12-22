@@ -25,12 +25,6 @@ Class Employeeaction extends CI_Controller{
 		
 		if ($this->input->post('empAction') == 'My Profile')
 		{
-			//Load the model to botain the information related to this user
-			//Ask if is better to have this info in the session variable or go to the model toretrive the data again
-			//Go to the model
-			/*$this->load->model('userinfo_model');
-			$this->userinfo_model->getuserinfo();*/
-			
 			//loading session library 
 			$this->load->library('session');
 			//store the info of the session variable in a variable to red in the page
@@ -62,13 +56,6 @@ Class Employeeaction extends CI_Controller{
 		
 		if ($this->input->post('empAction') == 'Update')
 		{
-		
-			/*print_r($this->input->post());
-			
-			echo "<br>";
-			
-			print_r($this->session->userdata());*/
-			
 			
 			//Validate if the data enter for the user is correct
 			$this->load->library('form_validation');
@@ -235,92 +222,6 @@ Class Employeeaction extends CI_Controller{
 		$this->load->view('templates/footer', $title);
 	}
 	
-	//This function is used to validate the data selected and 
-	//typed for the user
-/*	public function makeRequest()
-	{
-
-		if ($this->input->post('empAction') == 'Go back')
-		{
-			//echo "Hello";
-			
-			//load the userID from the session
-			$userID = $this->session->userdata('mID');
-			//Call the model to get the data again from the database ab return the result.
-			$this->load->model('AccessHistory_model');
-			$tempLogsHistory = $this->AccessHistory_model->searchLogs($userID);
-						
-			$data1['tempLogsHistory'] = $tempLogsHistory;
-			
-			//Built the page of the current employee
-			$title['title'] = "Employee";
-			$this->load->view('templates/header', $title);
-			$this->load->view('pages/employee',$data1);
-			$this->load->view('templates/footer', $title);
-			
-		}
-		else
-		{
-			
-		
-			$this->load->library('form_validation'); // called the library to validate the forms
-			$selectedSystem = $this->input->post('resources'); //Post Method that returns the value selected for the user in the comboBox
-			$mboxInfo = $this->input->post('reason_comment'); //Post method that retieves the data enter in the textarea for the user
-		
-		
-			//Validation rules applied to the form.
-			//set_rules('1','2','3','4');
-			//1. The field name - the exact name you’ve given the form field.
-			//2. A “human” name for this field, which will be inserted into the error message. 
-			//3. The validation rules for this form field.
-			//4. (optional) Set custom error messages on any rules given for current field. If not provided will use the default one.
-			
-			//ComboBox Validation
-			$this->form_validation->set_rules('resources', 'resources', 'required|callback_select_validate');
-			//Text area validation
-			$this->form_validation->set_rules('reason_comment', 'message', 'required');
-			
-			//If the form is not valid, calls the function of this controller called: request()
-			//And send back the error message to the caller form
-			if($this->form_validation->run() == FALSE)
-			{
-				$this->request();
-				
-			}
-			else
-			{	
-				//echo $selectedSystem; //test for verify the data enter for the user
-				//echo $mboxInfo;
-				
-				//If the user enter the correct data this controller call the model
-				// to fill the data enter by the user into the database.
-				$this->load->model('makeRequest_model');
-				$this->makeRequest_model->insertRequestDB($selectedSystem,$mboxInfo);
-				
-				
-				$userID = $this->session->userdata('mID'); //Call the session variable to get the id of the user in order to insert the resquest into the database
-	
-				$this->load->model('AccessHistory_model'); //Call the model AccessHistory_model to retrieve the data in the table accesslogs including the new data
-				$tempLogsHistory = $this->AccessHistory_model->searchLogs($userID);
-				$data1['tempLogsHistory'] = $tempLogsHistory;
-				
-				
-				//Load the helper to create th form
-				$this->load->helper(array('form', 'url'));
-				
-				//The controller call the view to create the page employee that include all the accesslogs for the current user
-				$title['title'] = "Employee";
-				$this->load->view('templates/header', $title);
-				$this->load->view('pages/employee',$data1);
-				$this->load->view('templates/footer', $title);
-				
-						
-			}
-		}
-
-		
-
-	}*/
 	
 	function select_validate($selectedSystem)
 	{

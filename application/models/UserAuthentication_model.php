@@ -4,27 +4,14 @@
 class UserAuthentication_model extends CI_Model{
 	
 	public function __construct(){
-		/*
-		// Load form helper library
-		$this->load->helper('form');
 
-		// Load form validation library
-		$this->load->library('form_validation');
-
-		// Load session library
-		$this->load->library('session');*/
-
-		// Load database
 		$this->load->database();
 	}
 	
 	//public function user_verification($email, $pass)
 	public function user_verification()
 	{
-		/*echo $_POST['username'];
-		echo $_POST['password'];
-		*/
-		//echo "estoy en el modelo the verification";
+
 		
 		$email = $_POST['username'];
 		$pass = $_POST['password'];
@@ -47,14 +34,6 @@ class UserAuthentication_model extends CI_Model{
 		
 		$result = $query->row_array();
 		
-		
-// Produces:
-// SELECT * FROM blogs JOIN comments ON comments.id = blogs.id
-		
-		
-		//print_r($result);
-		
-		//echo count($result);
 		if(count ($result) >0)
 		{
 			//echo "user exist";

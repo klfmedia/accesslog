@@ -6,20 +6,7 @@
 <ul class="sidenav">
 		<li><div id="empAvatar"><img src="<?php echo base_url('/images/avatars/'. $picture);?>" style="width:100px; height:100px;"></div></li>
 		<li><div id="empName"><h3>Hello <?php echo $this->session->userdata('firstName')." ".$this->session->userdata('lastName')?></h3></div></li>
-		<?php /*if( count($tempLogsHistoryAdmin) > 0) {
-			
-			echo "<li><input class='btnEmployeesSub' type='submit' value='Admin Request Access' name='adminAction'/></li>";
-			
-		}*/?>
-				
-		
-		<!--<li><?php /*if($this->session->userdata('level') == 1) {echo "<input class='btnEmployeesSub' type='submit' value='My Access History' name='empAction'/>";}
-				  if($this->session->userdata('level') == 2) {echo "<input class='btnEmployeesSub' type='submit' value='Logs History' name='adminAction'/>";}*/?></li>-->
-		
-		
-		
-		
-		<!--<li><input class="btnEmployeesSub" type="submit" value="My Access History" name="empAction"/><li>-->
+
 		<li><input class='btnEmployeesSub' type='submit' value='Logs History' name='adminAction'/></li>
 		<li><input class="btnEmployeesSub" type="submit" value="My Profile" name="adminAction"/></li>
 </ul>
@@ -48,7 +35,4 @@
 <?php echo"</table>"?>
 <?php } ?>
 
-<?php /*echo form_open('administratoraction/action');*/?> 
-	<!--<input type="submit" value="Go back" name="goback"/>-->
-<!--</form>-->
 </div>
