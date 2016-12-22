@@ -1,0 +1,42 @@
+.employeeAccessHistory{
+	float:right;
+	width:79.5%;
+	position:right;
+	margin-top:50px;
+
+	opacity: 0.9;
+	filter: alpha(opacity=60); /* For IE8 and earlier */
+	text-align:center;
+	/*border: 2px solid green;*/
+	margin-bottom:50px; 
+}
+
+.employeeAccessHistory h3{
+	color: white;
+}
+
+
+table.tblemp {
+    border-collapse: collapse;
+    width: 80%;
+	position: relative;
+	margin:auto;
+	background-color: #ffffff;
+}
+
+
+table.tblemp thead{
+	background-color: #b30000;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	
+	
+}
+
+table.tblemp tbody{
+    text-align: left;
+    padding: 8px;
+}
+
+table.tblemp tr:nth-child(even){background-color: #ffcccc}

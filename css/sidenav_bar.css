@@ -1,0 +1,66 @@
+ul.sidenav {
+    list-style-type: none;
+	margin-top: 50px;
+    padding: 0;
+    width: 20%;
+    background: rgba(241, 241, 241, 0.9);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+	/*border:1px solid yellow;*/
+}
+
+ul.sidenav li input {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+ul.sidenav li input:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.btnEmployeesSub {
+	width:100%;
+	background:none;
+    border:none;
+	text-align: left;
+	cursor: pointer;
+
+}
+
+
+
+#empName{
+	display: inline-block;
+	/*border: 1px solid blue;*/
+	width: 100%;
+	margin:auto;
+	/*position:absolute;*/
+	/*float: left;*/
+
+	/*display: inline-block;*/
+	/*max-width: 250px;
+	position:fixed;*/
+	/*padding-left:100px;*/
+}
+
+#empAvatar{
+	padding-top:5px;
+	display: inline-block;
+	margin:auto;
+	/*position:absolute;*/
+	/*border: 1px solid red;*/
+	/*float: right;*/
+	width: 100%;
+	clear: both;
+	text-align:center;
+}
+
+.sidenav h3 {
+	/*border: 1px solid green;*/
+	text-align:center;
+	color: black;
+}
