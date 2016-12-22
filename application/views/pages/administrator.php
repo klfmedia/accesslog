@@ -24,7 +24,7 @@
 
 <?php if( count($tempLogsHistoryAdmin) > 0) {?>
 
-<?php echo "<table class='tblemp'  align='center'>" ?>
+<?php echo "<table class='tblAdmin'  align='center'>" ?>
 	<?php echo "<thead>" ?>
 	<?php echo"<tr><th>Employee</th><th>System</th><th>Reason</th><th>Request Date</th></tr>"?>
 	<?php echo "</thead>" ?>
