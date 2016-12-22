@@ -7,7 +7,7 @@ ul.sidenav {
     position: fixed;
     height: 100%;
     overflow: auto;
-	/*border:1px solid yellow;*/
+	
 }
 
 ul.sidenav li input {
@@ -35,32 +35,24 @@ ul.sidenav li input:hover:not(.active) {
 
 #empName{
 	display: inline-block;
-	/*border: 1px solid blue;*/
+	
 	width: 100%;
 	margin:auto;
-	/*position:absolute;*/
-	/*float: left;*/
 
-	/*display: inline-block;*/
-	/*max-width: 250px;
-	position:fixed;*/
-	/*padding-left:100px;*/
 }
 
 #empAvatar{
 	padding-top:5px;
 	display: inline-block;
 	margin:auto;
-	/*position:absolute;*/
-	/*border: 1px solid red;*/
-	/*float: right;*/
+	
 	width: 100%;
 	clear: both;
 	text-align:center;
 }
 
 .sidenav h3 {
-	/*border: 1px solid green;*/
+	
 	text-align:center;
 	color: black;
 }

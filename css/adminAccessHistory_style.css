@@ -7,22 +7,22 @@
 	opacity: 0.9;
 	filter: alpha(opacity=60); /* For IE8 and earlier */
 	text-align:center;
-	/*border: 2px solid green;*/
+
 	margin-bottom:50px;
 	 
 }
 
 #nologsAdv{
-	/*height:25%;*/
+	
 	width: 40%;
 	background-color: rgba(255, 255, 255, 0.7);
-	/*border: 1px solid blue;*/
+	
 	margin:auto;
 }
 
 .adminAccessHistory h3{
 	color: white;
-	/*border: 1px solid blue;*/
+	
 }
 
 
@@ -46,20 +46,7 @@ table.tblemp thead{
 	
 }
 
-table.tblemp th{
-	/*background-color: #b30000;
-	color: white;
-	text-align: center;
-	padding: 10px;*/
-	
-}
 
-/*
-table.tblemp tbody{
-	display: block;
-    overflow: auto;
-}
-*/
 
 table.tblemp tbody{
     text-align: left;

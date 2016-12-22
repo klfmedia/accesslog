@@ -5,20 +5,8 @@
 	position:right;
 	margin-top:55px;
 	
-	/*margin: 30px;*/
-	/*background-color: #ffffff;*/
-	/*border: 2px solid green;*/
-	/*opacity: 0.9;*/
-	/*filter: alpha(opacity=60);*/ /* For IE8 and earlier */
-	/*text-align:center;*/
 	margin-bottom:50px;
 	
-	/*margin: 30px;
-	background-color: #ffffff;
-	border: 1px solid black;
-	opacity: 0.9;*/
-	/*filter: alpha(opacity=60);*/ /* For IE8 and earlier */
-	/*text-align:center;*/
 }
 
 input[type=text]:focus {
@@ -39,12 +27,7 @@ input[type=text]:focus {
 	border-radius: 4px;
 	padding-left:25px;
 	box-sizing : border-box;
-	
 	margin:auto;
-	
-	/*text-align:center;*/
-	/*padding:10px;*/
-	/*border: 1px solid blue;*/
 }
 
 #radiobuttons{
@@ -62,13 +45,9 @@ input[type=text]:focus {
 
 .btnUpdateArea{
 	text-align: center;
-	/*border: 1px solid red;*/
-	/*height:50px;*/
+	
 }
-/*.btnUpdate input{
-	width:50%;
-	height:100%;
-}*/
+
 
 #btnUpdate{
     background-color: #808080;
