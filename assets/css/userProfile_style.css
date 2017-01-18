@@ -1,0 +1,78 @@
+.userProfile{
+	float:right;
+	width:79.5%;
+	height:auto;
+	position:right;
+	margin-top:55px;
+
+	margin-bottom:50px;
+}
+
+
+.titlesUsrProfile{
+	padding-left:25px;
+	/*border:1px solid black;*/
+	/*text-align:center;*/
+	/*width:90%;*/
+}
+
+/*.userProfile_fieldset{
+	width: 70%;
+	margin:auto;
+	background-color: #ffffff;
+	border-radius: 15px;
+	font-style:italic;
+}*/
+
+.col1UsrInfo{
+	width:30%;
+}
+
+.tblUsrInfo{
+	width:70%;
+}
+
+.usrInfoArea{
+	width: 70%;
+	position: relative;
+	margin:  20px auto;
+	background-color: rgba(204, 204, 204, 0.9);
+	border-radius: 10px;
+	padding-top: 10px;
+	
+	/*border:1px solid green;*/
+	
+}
+
+.tbInfo{
+	width: 100%;
+    padding: 10px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+	background-color:rgba(230, 230, 230, 1);
+    /*border-bottom: 2px solid red;*/
+}
+
+@media screen and (max-width: 400px) {
+	.userProfile{
+		float:left;
+		width:100%;
+		margin-top:5px;
+		margin-bottom:50px;
+	}
+	
+	
+	.usrInfoArea{
+		width: 90%;
+		position: relative;
+		margin:  10px auto;
+	}
+	
+	.userProfile_fieldset{ width: 90%;}
+	
+	.col1UsrInfo{ width:100%;}
+	
+}
+
+

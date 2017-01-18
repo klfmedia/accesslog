@@ -1,0 +1,245 @@
+.employeeAccessHistory{
+	float:right;
+	width:79.5%;
+	position:right;
+	margin-top:50px;
+
+	opacity: 0.9;
+	filter: alpha(opacity=60); /* For IE8 and earlier */
+	text-align:center;
+
+	margin-bottom:50px; 
+}
+
+.employeeAccessHistory h3{
+	color: white;
+}
+
+
+table.tblemp  {
+	
+	background: #f5f5f5;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: left;
+	width: 800px;
+}	
+
+
+.tblemp th {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+    font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
+}
+
+.tblemp th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
+}
+
+.tblemp th:first-child {
+	border-left: 1px solid #777;	
+	box-shadow: inset 1px 1px 0 #999;
+}
+
+.tblemp th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+}
+
+.tblemp td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+.tblemp td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}	
+
+.tblemp td:last-child {
+	border-right: 1px solid #e8e8e8;
+	box-shadow: inset -1px 0 0 #fff;
+}	
+
+
+.tblemp tr:nth-child(odd) td {
+	background: #f1f1f1; 
+}
+/*
+.tblemp tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff; 
+}
+
+
+.tblemp tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}	
+
+.tblemp tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}	
+
+.tblemp tbody:hover td {
+	color: transparent;
+	text-shadow: 0 0 3px #aaa;
+}
+
+.tblemp tbody:hover tr:hover td {
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+}*/
+
+
+
+
+
+
+
+
+/*table.tblemp {
+    border-collapse: collapse;
+    width: 90%;
+	position: relative;
+	margin:auto;
+	background-color: #ffffff;
+}*/
+
+
+/*table.tblemp thead{
+	background-color: #b30000;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	
+	
+}*/
+
+/*table.tblemp tbody{
+    text-align: left;
+    padding: 8px;
+}
+*/
+/*table.tblemp tr:nth-child(even){background-color: #ffcccc}*/
+
+@media screen and (max-width: 400px) {
+	
+	.employeeAccessHistory{
+		/*float:right;*/
+		width:100%;
+		/*position:right;*/
+		margin-top:0px;
+
+		opacity: 0.9;
+		filter: alpha(opacity=60); /* For IE8 and earlier */
+		text-align:center;
+
+		margin-bottom:50px; 
+		
+		/*border:10px solid red;*/
+	}
+	
+	table.tblemp {
+		width: 100%;
+		
+		/*background-color: #f5f5f5;*/
+		/*border:1px solid green;*/
+	}
+	
+	/* Force table to not be like tables anymore */
+	.tblemp table, thead, tbody, th, td, tr { 
+		display: block; 
+		
+	}
+	
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.tblemp thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		background-color:white;
+	}
+	
+	table.tblemp thead{
+	display: none;
+	}
+	
+	.tblemp tr { 
+		border: 1px solid #ccc;
+		
+		border-right: 3px solid #fff;
+		border-left: 3px solid #e8e8e8;
+		border-top: 3px solid #fff;
+		border-bottom: 3px solid #e8e8e8;
+	}
+	
+	.tblemp td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%;
+		font-size:12px;
+		
+	}
+	
+	.tblemp td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	.tblemp td:nth-of-type(1):before { content: "System:"; }
+	.tblemp td:nth-of-type(2):before { content: "Request Date:"; }
+	.tblemp td:nth-of-type(3):before { content: "Reason:"; }
+	.tblemp td:nth-of-type(4):before { content: "Status:"; }
+
+	
+
+	/*
+	
+	
+	
+	*/
+	
+	
+	
+	
+	table.tblemp {
+    /*border-collapse: collapse;*/
+    width: 80%;
+	position: relative;
+	/*margin:auto;*/
+	/*background-color: #111111;*/}
+   
+}

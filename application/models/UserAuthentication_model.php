@@ -43,7 +43,11 @@ class UserAuthentication_model extends CI_Model{
 		}
 		else
 		{
-			echo "This member doesn't exist";
+			/*$this->load->view('templates/header');
+			$this->load->view('login_view.php');
+			$this->load->view('templates/footer');
+			echo "<script> alert ('This member doesn't exist') </script>";*/
+			//echo "This member doesn't exist";
 			return null;
 		}
 	}

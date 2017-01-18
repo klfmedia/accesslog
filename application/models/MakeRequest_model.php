@@ -4,7 +4,7 @@ Class MakeRequest_model extends CI_Model{
 	function __construct ()
 	{
 		//loading session library 
-		$this->load->library('session');
+		//$this->load->library('session');
 		
 		$this->load->database();
 	}
