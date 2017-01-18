@@ -70,6 +70,13 @@ else if ($this->session->userdata('level') == 2)
 				}
 			?>
 		</li>
+		<li>	
+			<?php
+				echo form_open('home/myprofile');
+				echo"<input class='btnEmployeesSub' type='submit' value='View your profile' name='empAction'/>";
+				echo form_close();
+			?>
+		</li>
 </ul>
  
  

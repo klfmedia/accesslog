@@ -58,7 +58,7 @@
 								}break;
 								case '2':
 								{
-									echo "In Progress";
+									echo "Pending";
 								}break;
 								
 							}
