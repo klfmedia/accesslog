@@ -100,7 +100,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <img class="img-responsive" src="public/main_asset/images/logo.png" alt="logo" width="30%">
+           <a href="main"> <img class="img-responsive" src="public/main_asset/images/logo.png" alt="logo" width="30%"></a>
                               
         </div>
         <div class="collapse navbar-collapse">
