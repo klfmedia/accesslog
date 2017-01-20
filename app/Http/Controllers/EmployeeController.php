@@ -28,7 +28,7 @@ public function postSendRequest(SendAccessRequest $request)
 	$accesslog=new accesslog;	
 	$accesslog->userId=Auth::user()->id;
 	$accesslog->resId=$request->cboResource;
-	$accesslog->requestDate=$request->txtRequestDate;
+	$accesslog->requestDate=date("Y-m-d H:i:s");
 	$accesslog->reason=$request->txtReason;
 	$accesslog->save();
 	return back()->with('message','Your request has been send');
