@@ -23,7 +23,7 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Resource</th>
-                                <th>Request</th>
+                                <!--  <th>Request</th> -->
                                 <th>Send Date</th>
                                 <th>Reason</th>
                                 <th>Status</th>
@@ -36,7 +36,7 @@
                                 <td>{{$acc->id}}</td>
                                 <td>{{$acc->user->firstName}}</td>
                                 <td>{{$acc->resource->resName}}</td>
-                                <td>{{$acc->requestDate}}</td>
+                                 <!--   <td>{{$acc->requestDate}}</td> -->
                                 <td>{{$acc->sendDate}}</td>
                                 <td>{{$acc->reason}}</td>
                                 @if($acc->accStatus==0)
