@@ -36,7 +36,6 @@
 			<?php $js = 'document.getElementById("id01").style.display="block"'; ?>
 			
 			<?php echo"<button type='button' name='validateButton' onclick='".$js."; myFunction(".$oneRec['acclogID'].");' class='validatebtns'>Validate</button>"?>
-			<?php //echo"<button type='button' name='validateButton' onclick='myFunction(".$oneRec['acclogID'].")' class='validatebtns'>Validate</button>"?>
 			</div>
 			
 			<?php echo"</td>"?>
@@ -56,7 +55,7 @@
 		<div class="modal-content animate">
 			<div class="container">
 				<label><b>Please write a message for your decision</b></label>
-				<textarea class="admincomment" name="reason_comment" placeholder="Please write a comment" cols="100%" rows="10" tabindex="4" required ></textarea>
+				<textarea class="admincomment" name="reason_comment" placeholder="Your comment goes here" cols="100%" rows="10" tabindex="4" required ></textarea>
       
 			</div>
 			
@@ -77,7 +76,6 @@
 <script>
 function myFunction(myval) {
 	document.getElementById('logtempID').value = myval;
-	//alert(myval);
 	}		
 </script>
 
