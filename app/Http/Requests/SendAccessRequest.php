@@ -24,7 +24,7 @@ class SendAccessRequest extends Request {
 		// check when we add
 		return 
 			[
-				"txtRequestDate"=>"required|date|after:today",
+				//"txtRequestDate"=>"required|date|after:today",
 				"txtReason"=>"required",
 				"cboResource"=>"required",
 			];				
@@ -32,9 +32,9 @@ class SendAccessRequest extends Request {
 
 	public function messages(){
 		return [
-			'txtRequestDate.required'=>'Please enter date request',
-			'txtRequestDate.date'=>'Please enter right format of date request',
-			'txtRequestDate.after'=>'The date request must be after today',
+			//'txtRequestDate.required'=>'Please enter date request',
+			//'txtRequestDate.date'=>'Please enter right format of date request',
+			//'txtRequestDate.after'=>'The date request must be after today',
 			'txtReason.required'=>'Please enter the reason',
 			"cboResource.required"=>"Please choose the resource to request",
 			];
