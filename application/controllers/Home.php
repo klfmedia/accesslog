@@ -76,14 +76,11 @@ class Home extends CI_Controller {
 	private function checkUsr()
 	{
 		if($this->session->userdata('level') == 1){
-			 
 			$this->empLogs();
 		}
 		
 		if($this->session->userdata('level') == 2){
-			
-		/*to dooooo*/
-			//echo "<script> alert ('hello admin') </script>";
+	
 			$this->adminLogs();
 		}
 		
@@ -212,13 +209,7 @@ class Home extends CI_Controller {
 			
 			$userID = $this->session->userdata('mID'); //Call the session variable to get the id of the user in order to insert the resquest into the database
 		
-			/*$this->load->model('AccessHistory_model'); //Call the model AccessHistory_model to retrieve the data in the table accesslogs including the new data
-			$tempLogsHistory = $this->AccessHistory_model->searchLogs($userID);
-			$data1['tempLogsHistory'] = $tempLogsHistory;*/
-			
-			
-			
-			
+
 			$this->load->model('getresourceinfo_model'); // The controller call the model called getresourceinfo_model
 			$tempResult = $this->getresourceinfo_model->getResourceInfo(); //The model is called and goes to the function called getResourceInfo(), this function returns and array of the query from the model
 			$resultInfo['tempResult'] = $tempResult; //Returned information
@@ -227,7 +218,6 @@ class Home extends CI_Controller {
 			
 			
 			//Load the helper to create th form
-			//$this->load->helper(array('form', 'url'));
 			
 			$resultInfo['message'] ="Request sent";
 			
@@ -267,13 +257,12 @@ class Home extends CI_Controller {
 		
 		//pagination
 		$config['base_url']='http://localhost/accesslog/home/adminLogs';
-		//$data['total_rows']= $query2->num_rows();
 		$config['total_rows']= $records['tempnbrrec'];
 		$config['per_page']=5;
 		$config['num_links']=2;
 
 
-		//$data['records']= $query->result_array();
+
 		$config['records']= $records['temprecords'];
 
 
@@ -326,13 +315,11 @@ class Home extends CI_Controller {
 		
 		//pagination
 		$config['base_url']='http://localhost/accesslog/home/adminRequestAccess';
-		//$data['total_rows']= $query2->num_rows();
 		$config['total_rows']= $records['tempnbrrec'];
 		$config['per_page']=5;
 		$config['num_links']=2;
 
 
-		//$data['records']= $query->result_array();
 		$config['records']= $records['temprecords'];			
 		
 		$config['full_tag_open']='<ul class = "pagination">';
@@ -373,33 +360,34 @@ class Home extends CI_Controller {
 		{
 			$status = 1;
 			$this->changestatuslog($status);
-			echo 'accept';
+			//echo 'accept';
 		}
 		
 		if ($this->input->post('deny'))
 		{
 			$status = 0;
 			$this->changestatuslog($status);
-			echo 'deny';
+			//echo 'deny';
 		}
 	}
 	
 	function changestatuslog($status)
 	{
 		$logID = $this->input->post('logID');
+		$message = $this->input->post('reason_comment');
 		
+		
+		$data = array ( 'acclogStatus'  => $status,
+						'adminResponse' => $message);
+								
 		$this->load->model('accesshistory_model');
-		$this->accesshistory_model->changestatuslog($logID,$status);
+		$this->accesshistory_model->changestatuslog($data, $logID);
+		
+
 		
 		$this->adminRequestAccess();
 	}
 
-		
-		
-	
-	
-	
-	
 	
 	//****************************General functions for admin and employee users************************************/
 	
@@ -440,7 +428,7 @@ class Home extends CI_Controller {
 		
 		//Stablish the rules that are going to use to validate the data enter by the user
 		$this->form_validation->set_rules('fname', 'First Name', 'trim|required|regex_match[/'.$regExpNames.'/]');
-		$this->form_validation->set_rules('lname', 'First Name', 'trim|required|regex_match[/'.$regExpNames.'/]');
+		$this->form_validation->set_rules('lname', 'Last Name', 'trim|required|regex_match[/'.$regExpNames.'/]');
 		$this->form_validation->set_rules('phonenbr', 'Phone number', 'trim|required|regex_match[/'.$regExpPhones.'/]');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/'.$regExpEmail.'/]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required', array('required' => 'You must provide a %s.'));
@@ -450,16 +438,7 @@ class Home extends CI_Controller {
 
 
 
-		//Modify some values of the current session
-		$this->session->set_userdata('firstName', $this->input->post('fname'));
-		$this->session->set_userdata('lastName', $this->input->post('lname'));
-		$this->session->set_userdata('dateOfBirth', $this->input->post('birthdate'));
-		$this->session->set_userdata('phoneNumber', $this->input->post('phonenbr'));
-		$this->session->set_userdata('mEmail', $this->input->post('email'));
-		$this->session->set_userdata('mPassword', $this->input->post('password'));
-		$this->session->set_userdata('contactName', $this->input->post('fullnamecontact'));
-		$this->session->set_userdata('relationContact', $this->input->post('relationcontact'));
-		$this->session->set_userdata('contactPhone', $this->input->post('phonenbrcontact'));
+
 		if($this->input->post('avatar')) //If the avatar was selected then update the avatar in the session
 		{
 			$this->session->set_userdata('picture', $this->input->post('avatar'));
@@ -469,22 +448,34 @@ class Home extends CI_Controller {
 		
 		if ($this->form_validation->run() == FALSE)
 		{	
-		
+			$message['message'] ="";
 			
 			//loading session library 
 			$this->load->library('session');
 
 			//The controller call the view to create the page updateuserprofile of the current user
 			//in order to display the correspond error
-			$title['title'] = "Update your information";
-			$this->load->view('templates/header', $title);
-			$this->load->view('pages/updateuserprofile');
-			$this->load->view('templates/footer', $title);
+			$this->load->view('templates/header');
+			$this->load->view('pages/updateuserprofile_view', $message);
+			$this->load->view('templates/footer');
+			
+			return null;
 			
 			
 		}
 		else
-		{
+		{	
+			//Modify some values of the current session
+			$this->session->set_userdata('firstName', $this->input->post('fname'));
+			$this->session->set_userdata('lastName', $this->input->post('lname'));
+			$this->session->set_userdata('dateOfBirth', $this->input->post('birthdate'));
+			$this->session->set_userdata('phoneNumber', $this->input->post('phonenbr'));
+			$this->session->set_userdata('mEmail', $this->input->post('email'));
+			$this->session->set_userdata('mPassword', $this->input->post('password'));
+			$this->session->set_userdata('contactName', $this->input->post('fullnamecontact'));
+			$this->session->set_userdata('relationContact', $this->input->post('relationcontact'));
+			$this->session->set_userdata('contactPhone', $this->input->post('phonenbrcontact'));
+			
 			//Call the model that is going to update the database with the info of the user
 			$this->load->model('userinfo_model');
 			$this->userinfo_model-> updateUserInfo();
