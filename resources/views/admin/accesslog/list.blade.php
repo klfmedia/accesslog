@@ -12,7 +12,7 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Resource</th>
-                                <th>Request</th>
+                                <!--   <th>Request</th> -->
                                 <th>Send Date</th>
                                 <th>Reason</th>
                                 <th>Deny</th>
@@ -25,7 +25,7 @@
                                 <td>{{$acc->id}}</td>
                                 <td>{{$acc->user->firstName}}</td>
                                 <td>{{$acc->resource->resName}}</td>
-                                <td>{{$acc->requestDate}}</td>
+                                  <!--     <td>{{$acc->requestDate}}</td> -->
                                 <td>{{$acc->sendDate}}</td>
                                 <td>{{$acc->reason}}</td>
                                 <td><a href="admin/accesslog/deny/{{$acc->id}}"><i class="fa fa-close  fa-fw" style="color:red"></i></a></td>
