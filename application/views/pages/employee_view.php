@@ -36,7 +36,7 @@
 	
 	<table class="tblemp">
 		<thead>
-		<tr><th>System</th><th>Request Date</th><th>Reason</th><th>Status</th></tr>
+		<tr><th>System</th><th>Request Date</th><th>Reason</th><th>Status</th><th>Response from the Admin</th></tr>
 		</thead>
 		
 		<tbody>
@@ -62,7 +62,8 @@
 								}break;
 								
 							}
-						?></td></tr>
+						?></td>
+					<td><?php echo $oneRec['adminResponse'];?></td></tr>
 	      
 	
 	
