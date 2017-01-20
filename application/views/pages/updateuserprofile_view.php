@@ -1,6 +1,4 @@
 <?php 
-//$this->load->library('session');
-//$this->load->helper(array('form', 'url'));
 
 $fname= $this->session->userdata('firstName');
 $lname=$this->session->userdata('lastName');
@@ -16,18 +14,6 @@ $cname= $this->session->userdata('contactName');
 $crelation= $this->session->userdata('relationContact');
 $cphone= $this->session->userdata('contactPhone');
 $picture= $this->session->userdata('picture');
-
-
-/*if ($this->session->userdata('level') == 1)
-{
-	echo form_open('employeeaction/action');
-}
-else if ($this->session->userdata('level') == 2)
-{
-	echo form_open('administratoraction/action');
-}
-*/
-
 
  ?>
  
@@ -86,7 +72,6 @@ else if ($this->session->userdata('level') == 2)
 <div class="updateuserprofile"> 
 
 <?php echo form_open('home/update'); ?>
-<h4 style="color:red;"><?php echo validation_errors(); ?></h4> 
 	<div class="usrInfoAreaUpdate">
 		<div class="titlesUpdateUsrProfile">
 			<label><strong>Edit your profile</strong></label>
@@ -94,19 +79,26 @@ else if ($this->session->userdata('level') == 2)
 		<h4 style="color:green; text-align:center;"><?php if ($message != null) { echo $message;} ?></h4> 
 		<div class="usrInfoAreaUpdate_field">
 		
-		
+		<span style="color:red;"><?php echo form_error('fname'); ?></span>
 		<label>First Name:</label>
-		<input type="text" name="fname" value="<?php echo $fname; ?>" autofocus="autofocus">
+		<input class="tbInfoUpdate" type="text" name="fname" value="<?php echo $fname; ?>" autofocus="autofocus">
+		
+		<span style="color:red;"><?php echo form_error('lname'); ?></span>
 		<label>Last Name:</label>
-		<input type="text" name="lname" value="<?php echo $lname; ?>" >
+		<input class="tbInfoUpdate" type="text" name="lname" value="<?php echo $lname; ?>" >
+		
 		<label>Birthdate:</label>
-		<input type="date" name="birthdate" value="<?php echo $dob; ?>"  min="1940-01-01" >
+		<input class="tbInfoUpdate" type="date" name="birthdate" value="<?php echo $dob; ?>"  min="1940-01-01" >
+		
+		<span style="color:red;"><?php echo form_error('phonenbr'); ?></span>
 		<label>Phone number:</label>
-		<input type="text" name="phonenbr" value="<?php echo $phonenbr; ?>" placeholder="Exp: 514-555-4433">
+		<input class="tbInfoUpdate" type="text" name="phonenbr" value="<?php echo $phonenbr; ?>" placeholder="Exp: 514-555-4433">
+		
+		<span style="color:red;"><?php echo form_error('email'); ?></span>
 		<label>Email:</label>
-		<input type="text" name="email" value="<?php echo $email; ?>" placeholder="yourmail@mail.com">
+		<input class="tbInfoUpdate" type="text" name="email" value="<?php echo $email; ?>" placeholder="yourmail@mail.com">
 		<label>Password:</label>
-		<input type="text" name="password" value="<?php echo $password; ?>">
+		<input class="tbInfoUpdate" type="password" name="password" value="<?php echo $password; ?>" placeholder="**********">
 		
 		<br>
 		<br>
@@ -145,14 +137,15 @@ else if ($this->session->userdata('level') == 2)
 		<br>
 		<div class="usrInfoAreaUpdate_field">
 			<legend><strong>In case of emargency contact:</strong></legend>
+			<span style="color:red;"><?php echo form_error('fullnamecontact'); ?></span>
 			<label>Name:</label>
-			<input type="text" name="fullnamecontact" value="<?php echo $cname; ?>">
+			<input class="tbInfoUpdate" type="text" name="fullnamecontact" value="<?php echo $cname; ?>">
+			<span style="color:red;"><?php echo form_error('relationcontact'); ?></span>
 			<label>Realtion:</label>
-			<input type="text" name="relationcontact" value="<?php echo $crelation; ?>">
+			<input class="tbInfoUpdate" type="text" name="relationcontact" value="<?php echo $crelation; ?>">
+			<span style="color:red;"><?php echo form_error('phonenbrcontact'); ?></span>
 			<label>Phone number:</label>
-			<input type="text" name="phonenbrcontact" value="<?php echo $cphone; ?>" placeholder="Exp: 514-555-4433">
-			
-
+			<input class="tbInfoUpdate" type="text" name="phonenbrcontact" value="<?php echo $cphone; ?>" placeholder="Exp: 514-555-4433">
 		</div>
 		<br>
 		<div class="btnUpdateArea">
@@ -166,17 +159,3 @@ else if ($this->session->userdata('level') == 2)
 <?php echo form_close(); ?>
   <br>
 </div>
-
-
-		<script>
-		/*function myFunction() {
-	
-		window.alert("Entre");
-	
-		var x = document.getElementById('radiobuttons');
-		if (x.style.display == 'none') {
-			x.style.display = 'block';
-		   } 
-		   else {x.style.display = 'none';}
-		   }*/
-		</script>
