@@ -57,38 +57,39 @@ $picture= $this->session->userdata('picture');
 		<div class="titlesUsrProfile">
 			<label><strong>Your Personal Information:</strong></label>
 		</div>
-		<!--<fieldset class="userProfile_fieldset">	-->		
+	
 			<table class="tblUsrInfo" align="center">
-				<tr><td class="col1UsrInfo">Name:</td><td><input class="tbInfo" type="text" name="fullname" value="<?php echo $fullname; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Join Date:</td><td><input class="tbInfo" type="text" name="joindate" value="<?php echo $joinDate; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Birthdate:</td><td><input class="tbInfo" type="text" name="birthdate" value="<?php echo $dob; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Phone number:</td><td><input class="tbInfo" type="text" name="phonenbr" value="<?php echo $phonenbr; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Email:</td><td><input class="tbInfo" type="text" name="email" value="<?php echo $email; ?>" readonly></td></tr>
+				
+				<tr><td class="col1UsrInfo">Name:</td><td><div class="tbInfo"><?php echo $fullname;?></div></td></tr>
+				<tr><td class="col1UsrInfo">Join Date:</td><td><div class="tbInfo"><?php echo $joinDate; ?></div></td></tr>
+				<tr><td class="col1UsrInfo">Birthdate:</td><td><div class="tbInfo"><?php echo $dob; ?></div></td></tr>
+				<tr><td class="col1UsrInfo">Phone number:</td><td><div class="tbInfo"><?php echo $phonenbr; ?></div></td></tr>
+				<tr><td class="col1UsrInfo">Email:</td><td><div class="tbInfo"><?php echo $email; ?></div></td></tr>
 			</table>
-		<!--</fieldset>-->
+
 		<br>
 		<div class="titlesUsrProfile">
 			<label><strong>Position and Department:</strong></label>
 		</div>
-		<!--<fieldset class="userProfile_fieldset">-->
+		
 			<table class="tblUsrInfo" align="center">
-				<tr><td class="col1UsrInfo">Position:</td><td> <input class="tbInfo" type="text" name="title" value="<?php echo $title; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Designation Project:</td><td><input class="tbInfo" type="text" name="desgproj" value="<?php echo $designation; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Department:</td><td> <input class="tbInfo" type="text" name="department" value="<?php echo $department; ?>" readonly></td></tr> 
+				<tr><td class="col1UsrInfo">Position:</td><td><div class="tbInfo"><?php echo $title; ?></div></td></tr>
+				<tr><td class="col1UsrInfo">Designation Project:</td><td><div class="tbInfo"><?php echo $designation; ?></div></td></tr>
+				<tr><td class="col1UsrInfo">Department:</td><td><div class="tbInfo"><?php echo $department; ?></div></td></tr> 
 
 			</table>
-		<!--</fieldset>-->
+
 		<br>
 		<div class="titlesUsrProfile">
 			<label><strong>In case of emargency contact:</strong></label>
 		</div>
-		<!--<fieldset class="userProfile_fieldset">-->
+		
 			<table class="tblUsrInfo" align="center">
-				<tr><td class="col1UsrInfo">Name:</td><td><input class="tbInfo" type="text" name="fullnamecontact" value="<?php echo $cname; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Realtion:</td><td><input class="tbInfo" type="text" name="relationcontact" value="<?php echo $crelation; ?>" readonly></td></tr>
-				<tr><td class="col1UsrInfo">Phone number:</td><td><input class="tbInfo" type="text" name="phonenbrcontact" value="<?php echo $cphone; ?>" readonly></td></tr>
+				<tr><td class="col1UsrInfo">Name:</td><td><div class="tbInfo"><?php echo $cname; ?></div></td></tr>
+				<tr><td class="col1UsrInfo">Realtion:</td><td><div class="tbInfo"><?php echo $crelation; ?></div></td></tr>
+				<tr><td class="col1UsrInfo">Phone number:</td><td><div class="tbInfo" ><?php echo $cphone; ?></div></td></tr>
 			</table>
-		<!--</fieldset>-->
+
 	<br>
 	</div>
   
