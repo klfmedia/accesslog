@@ -1,12 +1,15 @@
 /* Pagination */
 ul.pagination {
     display: inline-block;
-    padding: 5px;
+    padding: 4px;
     margin: 0;
-	height:25px;
+	height:28px;
 	/*border:1px solid red;*/
+	
+	/*background-color:rgba(238, 238, 238, 0.9);*/
 	/*background-color:#eee;*/
-	background-color:transparent;
+	/*background-color:transparent;*/
+	background-color:white;
 }
 
 ul.pagination li {display: inline;}
@@ -14,15 +17,24 @@ ul.pagination li {display: inline;}
 
 ul.pagination li a {
     color: black;
-    /*float: left;*/
-    padding: 6px 16px;
+
+    padding: 0px 16px;
+	margin: 5px;
     text-decoration: none;
+
 }
 
 ul.pagination li.active {
+	padding: 2px;
     background-color: red;
     color: white;
+
+
 }
 
-ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+ul.pagination li a:hover:not(.active) {
+	background-color: #ddd;
+	padding:10px
+
+	}
 
