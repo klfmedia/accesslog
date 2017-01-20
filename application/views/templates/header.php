@@ -47,14 +47,29 @@ header ('Pragma: no-cache');
 	<?php $this->load->library('session'); ?>
 	<div class="header">
 		<div id="leftside-header">
-		<a href="http://www.klfmedia.com">
+		
+			<?php 
+				if($this->session->userdata('level') == 1) 
+				{
+					
+					echo "<a href='".site_url('home/empLogs')."'>";
+
+				}
+				if($this->session->userdata('level') == 2) 
+				{	
+			
+					echo "<a href='".site_url('home/adminLogs')."'>";
+
+				}
+			?>
+		
 		<?php 
 		$image_properties = array('src'=> 'assets/images/klf-Logo.png',
-								  'alt'=> 'KLF Logo',
+								  'alt'=> 'Home',
 							      'id' => 'imglogo',
-								  'title' => 'www.klfmedia.com',);
+								  'title' => 'Go Home',);
 
-		echo img($image_properties);?><!--<img id="imglogo" src="/images/klf-Logo.png" alt="KLF Logo" >-->
+		echo img($image_properties);?>
 		</a>		
 		</div>
 		<div id="rigthside-header">
@@ -63,14 +78,12 @@ header ('Pragma: no-cache');
 			{
 				
 				echo "<a id='signout' href='".site_url("logout/signout")."'>Sign out</a>";
-					//echo 'session has data';
+
 			}
 			?>
-			<!--<a href="<?php //echo site_url('pages/view') ?>">logout</a>-->
+			
 		</div>
 		<div id="clear-spaces">
 		</div>
-		<!--<hr>-->
 	</div>
 	
-		<!--<h1><?php //echo $title; ?></h1>-->
