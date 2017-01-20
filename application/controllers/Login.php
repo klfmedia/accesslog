@@ -11,13 +11,7 @@ class Login extends CI_Controller {
 	{
 		$this->load->view('templates/headerLogin');
 		$this->load->view('pages/login_view.php');
-		/*$this->load->view('welcome_message');*/
 		$this->load->view('templates/footer');
 	}
 	
-	public function home()
-	{
-		echo "hello home";
-		echo "<script> alert ('hello') </script>";
-	}
 }
