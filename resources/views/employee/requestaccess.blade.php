@@ -32,9 +32,9 @@
             
                         <form action="employee/sendrequest" method="POST" >
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <div style="padding-bottom: 18px;">Request Date <br/>
+                       <!--    <div style="padding-bottom: 18px;">Request Date <br/>
                         <input type="date" id="txtRequestDate" name="txtRequestDate" style="width : 450px;" class="form-control"/>
-                        </div>
+                        </div> -->
                         <div style="padding-bottom: 18px;">Reason<br/>
                         <textarea style="width : 450px; height: 100px" class="form-control" name="txtReason" >{{old('txtReason')}}</textarea>
                         </div>
