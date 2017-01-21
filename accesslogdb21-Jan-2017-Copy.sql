@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `members` (
 INSERT INTO `members` (`mID`, `gender`, `firstName`, `lastName`, `title`, `designation`, `departmentID`, `joinDate`, `dateOfBirth`, `phoneNumber`, `mEmail`, `mPassword`, `contactName`, `relationContact`, `contactPhone`, `picture`, `status`, `level`) VALUES
 (2, 'male', 'Luis', 'Andres', 'stage', 'Project Access Logs', 1, '2016-11-21', '1990-01-14', '514-663-7492', 'luis.klf@gmail.com', '1111', 'Paola Rincon', 'Wife', '514-123-4567', 'a03.png', 'active', '1'),
 (3, 'male', 'Edie', 'Abdor', 'stage', 'Web Application', 1, '2016-11-21', '1975-01-16', '514234561', 'edie.klf@gmail.com', '2222', 'Mrs Edies', 'Wife', '514123456', 'a05.png', 'active', '1'),
-(4, 'male', 'admin', 'admin', 'full time', 'Manager', 1, '2005-11-21', '1975-01-16', '5142345611', 'admin.klf@gmail.com', 'admin', 'Mrs admin', 'Wife', '514-1234567', 'images/avatars/a07.png', 'active', '2');
+(4, 'male', 'Sandro', 'Mezzaccapa', 'full time', 'Manager', 1, '2005-11-21', '1975-01-16', '5142345611', 'admin.klf@gmail.com', 'admin', 'Mrs admin', 'Wife', '514-1234567', 'images/avatars/a07.png', 'active', '2');
 
 -- --------------------------------------------------------
 
